@@ -1,0 +1,71 @@
+{
+  "name": "liu-UI",
+  "version": "1.0.0",
+  "description": "基于Vue组件库",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "autoprefixer": "^9.3.1",
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.2.6",
+    "babel-loader": "7.1.5",
+    "babel-preset-vue-app": "^2.0.0",
+    "compression-webpack-plugin": "^1.1.12",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.1",
+    "eslint": "4.19.1",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-loader": "2.0.0",
+    "eslint-plugin-vue": "4.7.1",
+    "file-loader": "^2.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "highlight.js": "^9.15.8",
+    "html-webpack-plugin": "^4.0.0-beta.3",
+    "markdown-it": "^9.0.1",
+    "markdown-it-anchor": "^5.2.4",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-table-of-contents": "^0.4.4",
+    "mini-css-extract-plugin": "^0.4.4",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-salad": "^2.0.1",
+    "rimraf": "^2.5.4",
+    "script-ext-html-webpack-plugin": "^2.1.3",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "transliteration": "^2.1.4",
+    "url-loader": "^1.1.2",
+    "vue-loader": "^15.4.2",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
+    "ware-loader": "^0.2.4",
+    "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js --inline --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Merlin-Liu/liu-UI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Merlin-Liu/liu-UI/issues"
+  },
+  "homepage": "https://github.com/Merlin-Liu/liu-UI#readme"
+}
