@@ -7,6 +7,7 @@
     "example": "examples"
   },
   "dependencies": {
+    "highlight.js": "^9.15.8",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
@@ -18,6 +19,7 @@
     "babel-eslint": "8.2.6",
     "babel-loader": "7.1.5",
     "babel-preset-vue-app": "^2.0.0",
+    "cheerio": "^1.0.0-rc.3",
     "compression-webpack-plugin": "^1.1.12",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
@@ -35,10 +37,12 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-salad": "^2.0.1",
     "rimraf": "^2.5.4",
+    "sass-loader": "^7.1.0",
     "script-ext-html-webpack-plugin": "^2.1.3",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",

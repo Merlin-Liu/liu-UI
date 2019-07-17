@@ -1,9 +1,12 @@
-<style>
-  .demo-block {
-    height: 200px;
-    border: 2px solid green;
+<script>
+export default {
+  data() {
+    return {
+      input: '22222'
+    }
   }
-</style>
+}
+</script>
 
 ## Button 按钮
 常用的操作按钮。
@@ -13,8 +16,20 @@
 基础的按钮用法。
 
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
-```html
-<liu-button></liu-button>
+```javascript
+<template>
+  <liu-button>I am A Button</liu-button>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      input: '22222'
+    }
+  }
+}
+</script>
 ```
 :::
 

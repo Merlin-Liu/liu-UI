@@ -1,0 +1,45 @@
+// color
+$color-white: #fff !default;
+$color-black: #000 !default;
+
+$color-primary: #409eff !default;
+$color-success: #67C23a !default;
+$color-warning: #e6a23c !default;
+$color-danger: #f56c6c !default;
+$color-info: #909399 !default;
+
+$color-primary-light-1: mix($color-white, $color-primary, 10%) !default; /* 53a8ff */
+$color-primary-light-2: mix($color-white, $color-primary, 20%) !default; /* 66b1ff */
+$color-primary-light-3: mix($color-white, $color-primary, 30%) !default; /* 79bbff */
+$color-primary-light-4: mix($color-white, $color-primary, 40%) !default; /* 8cc5ff */
+$color-primary-light-5: mix($color-white, $color-primary, 50%) !default; /* a0cfff */
+$color-primary-light-6: mix($color-white, $color-primary, 60%) !default; /* b3d8ff */
+$color-primary-light-7: mix($color-white, $color-primary, 70%) !default; /* c6e2ff */
+$color-primary-light-8: mix($color-white, $color-primary, 80%) !default; /* d9ecff */
+$color-primary-light-9: mix($color-white, $color-primary, 90%) !default; /* ecf5ff */
+
+$color-text-primary: #303133 !default;
+$color-text-regular: #606266 !default;
+$color-text-secondary: #909399 !default;
+$color-text-placeholder: #c0c4cc !default;
+
+// font
+$font-weight-default: 500 !default;
+
+// border
+$border-default-width: 1px !default;
+$border-default-style: solid !default;
+$border-default-color: #dcdfe6 !default;
+$border-default: $border-default-width $border-default-style $border-default-color !default;
+$border-default-radius: 4px !default;
+
+// button
+$button-default-bgc: $color-white !default;
+$button-default-border: $border-default-color !default;
+$button-default-color: $color-text-regular !default;
+$button-default-weight: $font-weight-default !default;
+$button-font-size: 14px !default;
+$button-padding-vertical: 12px !default;
+$button-padding-horizontal: 20px !default;
+$button-border-radius: $border-default-radius !default;
+$button-active-shade-percent: 10% !default;

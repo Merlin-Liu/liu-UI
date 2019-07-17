@@ -23,11 +23,5 @@ exports.strip = function(str, tags) {
     $(tags[len]).remove();
   }
 
-  return $.html();
-};
-
-exports.fetch = function(str, tag) {
-  var $ = cheerio.load(str, {decodeEntities: false});
-  if (!tag) return str;
-  return $(tag).html();
+  return $('template').html();
 };

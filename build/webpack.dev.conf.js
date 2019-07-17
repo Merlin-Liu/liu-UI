@@ -24,18 +24,19 @@ md.use(require('markdown-it-anchor'),
       },
 
       render: function(tokens, idx) {
-        var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
+        var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
         if (tokens[idx].nesting === 1) {
-          var description = (m && m.length > 1) ? m[1] : '';
-          var content = tokens[idx + 1].content;
-          var html = convert(striptags.strip(content, ['script', 'style'])).replace(/(<[^>]*)=""(?=.*>)/g, '$1');
-          var descriptionHTML = description ? md.render(description) : '';
-          return `<demo-block class="demo-box">
-                    <div class="source" slot="source">${html}</div>
+          var description = m[1]
+          var content = tokens[idx + 1].content
+          var html = striptags.strip(content, ['script', 'style'])
+          var descriptionHTML = md.render(description)
+          return `<demo-block>
+                    <div slot="source">${html}</div>
                     ${descriptionHTML}
-                    <div class="highlight" slot="highlight">`;
+                    <div v-highlight slot="highlight">`
         } else {
-          return `</div></demo-block>\n`;
+          return `  </div>
+                  </demo-block>\n`;
         }
       }
     })
@@ -43,13 +44,6 @@ md.use(require('markdown-it-anchor'),
   .use(require('markdown-it-container'), 'warning');
 
 const isDev = process.env.NODE_ENV === 'development';
-
-function convert(str) {
-  str = str.replace(/(&#x)(\w{4});/gi, function($0) {
-    return String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16));
-  });
-  return str;
-}
 
 module.exports = () => ({
   mode: isDev ? 'development' : 'production',
@@ -76,12 +70,15 @@ module.exports = () => ({
         options: {
           raw: true,
           middleware: source => {
-            const reg = /<(style)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/ig;
-            const styleStr = reg.exec(source);
-            const templateStr = source.replace(reg, '');
+            const styleReg = /<(style)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/i
+            const scriptReg = /<(script)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/i
+            const styleStr = styleReg.exec(source)
+            const scriptStr = scriptReg.exec(source)
+            const templateStr = source.replace(styleReg, '').replace(scriptReg, '')
             return `
-              <template><div>${md.render(templateStr)}</div></template>
               ${styleStr}
+              <template><div class="container">${md.render(templateStr)}</div></template>
+              ${scriptStr}
             `;
           }
         }

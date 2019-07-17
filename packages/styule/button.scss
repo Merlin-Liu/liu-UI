@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import "./var.scss";
+@import "./mixins/mixins.scss";
+@import "./mixins/button.scss";
+
+@include b (button) {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  color: $button-default-color;
+  font-weight: $button-default-weight;
+  border: $border-default;
+  background: $button-default-bgc;
+  white-space: nowrap;
+  outline: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: .1s;
+
+  @include button-size($button-padding-vertical, $button-padding-horizontal, $button-font-size, $button-border-radius);
+
+  &:hover, &:focus {
+    color: $color-primary;
+    border-color: $color-primary-light-7;
+    background-color: $color-primary-light-9;
+  }
+
+  &:active {
+    color: mix($color-black, $color-primary, $button-active-shade-percent);
+    border-color: mix($color-black, $color-primary, $button-active-shade-percent);
+    outline: none;
+  }
+}

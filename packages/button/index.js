@@ -1,5 +1,5 @@
-import LiuButton from './button';
+import LiuButton from './button'
 
-LiuButton.install = Vue => Vue.component(LiuButton.name, LiuButton);
+LiuButton.install = Vue => Vue.component(LiuButton.name, LiuButton)
 
-export default LiuButton;
+export default LiuButton
