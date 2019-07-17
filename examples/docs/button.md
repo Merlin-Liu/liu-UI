@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      input: '22222'
+      input: '222211112'
     }
   }
 }
