@@ -77,7 +77,7 @@ module.exports = () => ({
             const templateStr = source.replace(styleReg, '').replace(scriptReg, '')
             return `
               ${styleStr}
-              <template><div class="container">${md.render(templateStr)}</div></template>
+              <template><div>${md.render(templateStr)}</div></template>
               ${scriptStr}
             `;
           }

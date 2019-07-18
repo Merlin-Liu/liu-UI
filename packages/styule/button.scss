@@ -21,6 +21,11 @@
 
   @include button-size($button-padding-vertical, $button-padding-horizontal, $button-font-size, $button-border-radius);
 
+  & + & {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
   &:hover, &:focus {
     color: $color-primary;
     border-color: $color-primary-light-7;
@@ -31,5 +36,96 @@
     color: mix($color-black, $color-primary, $button-active-shade-percent);
     border-color: mix($color-black, $color-primary, $button-active-shade-percent);
     outline: none;
+  }
+
+  // button disabled
+  @include when(disabled) {
+    &, &:hover, &:focus {
+      color: $button-disabled-color;
+      border-color: $button-disabled-border-color;
+      background-color: $button-disabled-full;
+      cursor: not-allowed;
+    }
+
+    &.is-plain {
+      &, &:hover, &:focus {
+        color: $button-disabled-color;
+        border-color: $button-disabled-border-color;
+        background-color: $button-disabled-full;
+      }
+    }
+  }
+
+  // plain button
+  @include when(plain) {
+    &:hover,
+    &:focus {
+      background: $color-white;
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+  // round button
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 20px;
+  }
+  // cricle button
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $button-padding-vertical;
+  }
+
+  // button type
+  @include m(primary) {
+    @include button-variant($color-white, $color-primary, $color-primary);
+  }
+  @include m(success) {
+    @include button-variant($color-white, $color-success, $color-success);
+  }
+  @include m(info) {
+    @include button-variant($color-white, $color-info, $color-info);
+  }
+  @include m(warning) {
+    @include button-variant($color-white, $color-warning, $color-warning);
+  }
+  @include m(danger) {
+    @include button-variant($color-white, $color-danger, $color-danger);
+  }
+  @include m(text) {
+    color: $color-primary;
+    border-color: transparent;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover,
+    &:focus {
+      color: mix($color-white, $color-primary, $button-hover-tint-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+    &:active {
+      color: mix($color-black, $color-primary, $button-active-shade-percent);
+      border-color: transparent;
+      background-color: transparent;
+    }
+
+    &.is-disabled,
+    &.is-disabled:hover,
+    &.is-disabled:focus {
+      border-color: transparent;
+    }
+  }
+
+  // button size
+  @include m(medium) {
+    @include button-size($button-medium-padding-vertical, $button-medium-padding-horizontal, $button-medium-font-size, $button-medium-border-radius)
+  }
+  @include m(small) {
+    @include button-size($button-small-padding-vertical, $button-small-padding-horizontal, $button-small-font-size, $button-small-border-radius)
+  }
+  @include m(mini) {
+    @include button-size($button-mini-padding-vertical, $button-mini-padding-horizontal, $button-mini-font-size, $button-mini-border-radius)
   }
 }

@@ -8,16 +8,11 @@
   </div>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style lang="scss">
 .demo-block {
   box-sizing: border-box;
   padding: 20px;
-  border: 1px solid #409eff;
+  border: 1px solid #ebedf0;
   .description {
     padding: 20px;
     box-sizing: border-box;
@@ -29,6 +24,9 @@ export default {
     word-break: break-word;
     margin: 10px 0;
     background-color: #fff;
+  }
+  &:hover {
+    box-shadow: 2px 2px 5px #bbb;
   }
 }
 
@@ -45,7 +43,7 @@ table {
   }
 
   td, th {
-    border-bottom: 1px solid #d8d8d8;
+    border: 1px solid #d8d8d8;
     padding: 15px;
     max-width: 250px;
   }

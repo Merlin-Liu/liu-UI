@@ -3,11 +3,20 @@
       class="liu-button"
       @click="hanldeCLick"
       :disabled="disabled"
+      :autofocus="autofocus"
+      :type="nativeType"
       :class="[
-        type ? 'liu-button-' + type : ''
+        type ? 'liu-button--' + type : '',
+        size ? 'liu-button--' + size : '',
+        {
+          'is-disabled': disabled,
+          'is-plain': plain,
+          'is-round': round,
+          'is-circle': circle
+        }
       ]"
     >
-      <slot v-if="$slots.default"></slot>
+      <slot></slot>
     </button>
 </template>
 
@@ -20,7 +29,16 @@ export default {
         type: String,
         default: 'default'
       },
-      disabled: Boolean
+      plain: Boolean,
+      round: Boolean,
+      circle: Boolean,
+      size: String,
+      disabled: Boolean,
+      autofocus: Boolean,
+      nativeType: {
+        type: String,
+        default: 'button'
+      }
     },
 
     methods: {

@@ -7,4 +7,25 @@
   .#{$B} {
     @content;
   }
-}
+};
+
+@mixin m($modifier) {
+  $currentSelector: '';
+  @each $item in $modifier {
+    $currentSelector: #{ $currentSelector + & + '--' + $item + ',' };
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+};
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+};

@@ -24,6 +24,7 @@ $color-text-secondary: #909399 !default;
 $color-text-placeholder: #c0c4cc !default;
 
 // font
+$font-size-default: 14px !default;
 $font-weight-default: 500 !default;
 
 // border
@@ -32,6 +33,7 @@ $border-default-style: solid !default;
 $border-default-color: #dcdfe6 !default;
 $border-default: $border-default-width $border-default-style $border-default-color !default;
 $border-default-radius: 4px !default;
+$border-color-lighter: #ebeef5 !default;
 
 // button
 $button-default-bgc: $color-white !default;
@@ -41,5 +43,25 @@ $button-default-weight: $font-weight-default !default;
 $button-font-size: 14px !default;
 $button-padding-vertical: 12px !default;
 $button-padding-horizontal: 20px !default;
+// medium
+$button-medium-font-size: 14px !default;
+$button-medium-border-radius: $border-default-radius !default;
+$button-medium-padding-vertical: 10px !default;
+$button-medium-padding-horizontal: 20px !default;
+// small
+$button-small-font-size: 12px !default;
+$button-small-border-radius: #{$border-default-radius - 1} !default;
+$button-small-padding-vertical: 9px !default;
+$button-small-padding-horizontal: 15px !default;
+// mini
+$button-mini-font-size: 12px !default;
+$button-mini-border-radius: #{$border-default-radius - 1} !default;
+$button-mini-padding-vertical: 7px !default;
+$button-mini-padding-horizontal: 15px !default;
+
 $button-border-radius: $border-default-radius !default;
 $button-active-shade-percent: 10% !default;
+$button-hover-tint-percent: 20% !default;
+$button-disabled-color: $color-text-placeholder !default;
+$button-disabled-full: $color-white !default;
+$button-disabled-border-color: $border-color-lighter !default;
