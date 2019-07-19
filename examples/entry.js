@@ -6,15 +6,18 @@ import 'font-awesome/css/font-awesome.css'
 import entry from './App.vue'
 import Demo from './components/demo'
 import LiuButton from '../packages/button'
+import LiuInput from '../packages/input'
 import '../packages/styule/index.scss'
 
-Vue.directive('highlight', function(el) {
-  const blocks = el.querySelectorAll('pre code');
+Vue.directive('highlight', el => {
+  const blocks = el.querySelectorAll('pre code')
   blocks.forEach(block => {
     hljs.highlightBlock(block)
   })
 })
-Vue.use(LiuButton);
+
+Vue.use(LiuButton)
+Vue.use(LiuInput)
 Vue.component('demo-block', Demo)
 
 new Vue({

@@ -1,14 +1,15 @@
-const resolve = require('path').resolve;
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
-const md = require('markdown-it')();
-const slugify = require('transliteration').slugify;
-const striptags = require('./strip-tags');
-const packagejson = require('../package.json');
+const resolve = require('path').resolve
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const md = require('markdown-it')()
+const slugify = require('transliteration').slugify
+const wareMidware = require('./ware-midware').mid
+const demoRender = require('./demo-render')
+const packagejson = require('../package.json')
 
 md.use(require('markdown-it-anchor'),
   {
@@ -23,22 +24,7 @@ md.use(require('markdown-it-anchor'),
         return params.trim().match(/^demo\s*(.*)$/);
       },
 
-      render: function(tokens, idx) {
-        var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
-        if (tokens[idx].nesting === 1) {
-          var description = m[1]
-          var content = tokens[idx + 1].content
-          var html = striptags.strip(content, ['script', 'style'])
-          var descriptionHTML = md.render(description)
-          return `<demo-block>
-                    <div slot="source">${html}</div>
-                    ${descriptionHTML}
-                    <div v-highlight slot="highlight">`
-        } else {
-          return `  </div>
-                  </demo-block>\n`;
-        }
-      }
+      render: demoRender
     })
   .use(require('markdown-it-container'), 'tip')
   .use(require('markdown-it-container'), 'warning');
@@ -69,18 +55,7 @@ module.exports = () => ({
         enforce: 'pre',
         options: {
           raw: true,
-          middleware: source => {
-            const styleReg = /<(style)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/i
-            const scriptReg = /<(script)(?:[^>]*)?>([\s\S]*?)(?:<\/\1>[^\"\']|<\/\1>$)/i
-            const styleStr = styleReg.exec(source)
-            const scriptStr = scriptReg.exec(source)
-            const templateStr = source.replace(styleReg, '').replace(scriptReg, '')
-            return `
-              ${styleStr}
-              <template><div>${md.render(templateStr)}</div></template>
-              ${scriptStr}
-            `;
-          }
+          middleware: source => wareMidware(source, md)
         }
       },
       {
@@ -170,7 +145,7 @@ module.exports = () => ({
     new OptimizeCSSPlugin({}),
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
-        messages: ['liu-UI运行在地址: http://localhost:8085']
+        messages: ['liu-UI运行在地址: http://localhost:8088']
       }
     }),
     new VueLoaderPlugin()
@@ -184,7 +159,7 @@ module.exports = () => ({
   devServer: {
     clientLogLevel: 'warning',
     host: 'localhost',
-    port: 8085,
+    port: 8088,
     hot: true,
     contentBase: false,
     compress: true,
