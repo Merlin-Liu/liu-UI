@@ -12,7 +12,8 @@ export default {
       textarea: '',
       textarea1: '',
       textarea2: '',
-      textarea3: ''
+      textarea3: '',
+      textarea4: ''
     }
   }
 }
@@ -221,7 +222,7 @@ export default {
 
 :::
 
-## 自动调整文本域
+## 输入长度限制
 
 可通过`autosize`设置文本域跟随自适应文本内容，`autosize`还可以设置为一个对象，指定最大行和最小行。
 
@@ -230,13 +231,15 @@ export default {
 ```html
 <template>
   <liu-input maxlength="10" show-word-limit v-model="textarea3" placeholder="请输入内容"></liu-input>
+  <liu-input type="textarea" maxlength="10" show-word-limit v-model="textarea4" placeholder="请输入内容"></liu-input>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      textarea3: ''
+      textarea3: '',
+      textarea4: ''
     }
   }
 }
