@@ -6,11 +6,13 @@ export default {
       input: '禁用状态',
       clearableValue: '',
       inputIcon: '',
-      password: '123',
+      password: '1234',
       input1: '',
       input2: '',
       textarea: '',
-      textarea1: ''
+      textarea1: '',
+      textarea2: '',
+      textarea3: ''
     }
   }
 }
@@ -81,6 +83,7 @@ export default {
     }
   }
 }
+</script>
 ```
 :::
 
@@ -201,13 +204,39 @@ export default {
 <template>
   <p>textarea: {{textarea1}}</p>
   <liu-input autosize v-model="textarea1" type="textarea" placeholder="请输入内容"></liu-input>
+  <liu-input :autosize="{maxRows: 6, minRows: 4}" v-model="textarea2" type="textarea" placeholder="请输入内容"></liu-input>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      textarea1: ''
+      textarea1: '',
+      textarea2: ''
+    }
+  }
+}
+</script>
+```
+
+:::
+
+## 自动调整文本域
+
+可通过`autosize`设置文本域跟随自适应文本内容，`autosize`还可以设置为一个对象，指定最大行和最小行。
+
+:::demo
+
+```html
+<template>
+  <liu-input maxlength="10" show-word-limit v-model="textarea3" placeholder="请输入内容"></liu-input>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      textarea3: ''
     }
   }
 }

@@ -9,6 +9,9 @@ import LiuButton from '../packages/button'
 import LiuInput from '../packages/input'
 import '../packages/styule/index.scss'
 
+// test
+import test from '../test'
+
 Vue.directive('highlight', el => {
   const blocks = el.querySelectorAll('pre code')
   blocks.forEach(block => {
@@ -23,4 +26,6 @@ Vue.component('demo-block', Demo)
 new Vue({
   router,
   render: h => h(entry)
+  // test
+  // render: h => h(test)
 }).$mount('#app')

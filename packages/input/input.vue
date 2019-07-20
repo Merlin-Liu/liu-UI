@@ -10,68 +10,79 @@
       }
     ]"
   >
-
     <template v-if="type !== 'textarea'">
+
       <!-- input-prepend -->
-      <div class="liu-input-group__prepend" v-if="$slots.prepend">
-        <slot name="prepend"></slot>
+      <div v-if="$slots.prepend" class="liu-input-group__prepend">
+        <slot name="prepend" />
       </div>
 
       <!-- input prefix -->
-      <span class='liu-input__prefix' v-if="$slots.prefix">
-        <slot name='prefix'></slot>
+      <span v-if="$slots.prefix" class="liu-input__prefix">
+        <slot name="prefix" />
       </span>
 
       <!-- input inner -->
       <input
-        class="liu-input__inner"
         :type="type === 'password' ? (passwordVisible ? 'password' : 'text') : type"
         :value="value"
         :disabled="disabled"
         :readonly="readonly"
         :tabindex="tabindex"
-        @input="handleInput"
         v-bind="$attrs"
-      />
+        class="liu-input__inner"
+        @input="handleInput"
+      >
 
       <!-- input suffix -->
-      <span class='liu-input__suffix' v-if="$slots.suffix || isClear || showPasswordIcon">
-        <slot name='suffix'></slot>
-        <i class="fa fa-times-circle" v-if="isClear" @click="clear"/>
-        <i class="fa fa-eye" v-if="showPasswordIcon" @click="togglePasswordVisible"></i>
+      <span v-if="$slots.suffix || isClear || showPasswordIcon || isWordLimitVisible" class="liu-input__suffix">
+        <slot name="suffix" />
+        <i
+          v-if="isClear"
+          class="fa fa-times-circle"
+          @click="clear"
+        />
+        <i
+          v-if="showPasswordIcon"
+          class="fa fa-eye"
+          @click="togglePasswordVisible"
+        />
+        <span v-if="isWordLimitVisible">{{ textLength }}/{{ upperLimit }}</span>
       </span>
 
       <!-- input-append -->
-      <div class="liu-input-group__append" v-if="$slots.append">
-        <slot name="append"></slot>
+      <div v-if="$slots.append" class="liu-input-group__append">
+        <slot name="append" />
       </div>
     </template>
 
     <textarea
       v-else
-      class="liu-textarea__inner"
+      ref="textarea"
       :value="value"
-      @input="handleInput"
       :readonly="readonly"
       :disabled="disabled"
+      :style="textareaStyle"
       v-bind="$attrs"
+      class="liu-textarea__inner"
+      @input="handleInput"
     />
+    <span v-if="isWordLimitVisible && type === 'textarea'">{{ textLength }}/{{ upperLimit }}</span>
 
   </div>
 </template>
 
 <script>
+import calcTextareaDomHeight from './calcTextareaDomHeight'
+
 export default {
   name: 'LiuInput',
 
   inheritAttrs: false,
 
-  data: () => ({
-    passwordVisible: true
-  }),
-
   props: {
     value: [String, Number],
+    size: String,
     type: {
       type: String,
       default: 'text'
@@ -88,8 +99,14 @@ export default {
       type: Boolean,
       default: false
     },
-    autosize: [Boolean, Object]
+    autosize: [Boolean, Object],
+    showWordLimit: Boolean
   },
+
+  data: () => ({
+    passwordVisible: true,
+    textareaStyle: ''
+  }),
 
   computed: {
     isClear() {
@@ -98,7 +115,34 @@ export default {
 
     showPasswordIcon() {
       return this.type === 'password' && !this.disabled && !this.readonly && this.value
+    },
+
+    isWordLimitVisible() {
+      const type = this.type
+      return this.showWordLimit && this.$attrs.maxlength &&
+        (type === 'text' || type === 'textarea') && !this.disabled && !this.readonly && !this.showPassword
+    },
+
+    textLength() {
+      if (typeof this.value === 'number') {
+        return String(this.value).length
+      }
+      return (this.value || '').length
+    },
+
+    upperLimit() {
+      return this.$attrs.maxlength
     }
+  },
+
+  watch: {
+    value() {
+      this.$nextTick(this.resizeTextarea)
+    }
+  },
+
+  mounted() {
+    this.resizeTextarea()
   },
 
   methods: {
@@ -115,9 +159,17 @@ export default {
     },
 
     resizeTextarea() {
-      const { type, autosize } = this
+      const {type, autosize} = this
       if (type !== 'textarea') return
 
+      if (!autosize) {
+        this.textareaStyle = {
+          minHeight: calcTextareaDomHeight(this.$refs.textarea).minHeight
+        }
+      } else {
+        const {minRows, maxRows} = autosize
+        this.textareaStyle = calcTextareaDomHeight(this.$refs.textarea, minRows, maxRows)
+      }
     }
   }
 }
