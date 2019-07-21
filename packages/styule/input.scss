@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+
+@include b(input) {
+  display: inline-block;
+  width: 100%;
+  font-size: $font-size-default;
+
+  @include e(inner) {
+    display: inline-block;
+    width: 100%;
+    font-size: inherit;
+    outline: none;
+  }
+}
