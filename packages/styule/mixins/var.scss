@@ -23,6 +23,8 @@ $color-text-regular: #606266 !default;
 $color-text-secondary: #909399 !default;
 $color-text-placeholder: #c0c4cc !default;
 
+$background-color-default: #F5F7FA !default;
+
 // font
 $font-size-default: 14px !default;
 $font-weight-default: 500 !default;
@@ -34,8 +36,18 @@ $border-default-color: #dcdfe6 !default;
 $border-default: $border-default-width $border-default-style $border-default-color !default;
 $border-default-radius: 4px !default;
 $border-color-lighter: #ebeef5 !default;
+$border-color-hover: $color-text-placeholder !default;
 
-// button
+/* disabled */
+$disabled-default-background-color: $background-color-default !default;
+$disabled-default-color: $color-text-placeholder !default;
+$disabled-default-border-color: $border-color-lighter !default;
+
+// transition
+$border-default-transition: border-color .2s cubic-bezier(.645,.045,.355,1) !default;
+
+
+/* button */
 $button-default-bgc: $color-white !default;
 $button-default-border: $border-default-color !default;
 $button-default-color: $color-text-regular !default;
@@ -65,3 +77,30 @@ $button-hover-tint-percent: 20% !default;
 $button-disabled-color: $color-text-placeholder !default;
 $button-disabled-full: $color-white !default;
 $button-disabled-border-color: $border-color-lighter !default;
+
+
+/* input */
+$input-width: 140px !default;
+$input-height: 40px !default;
+$input-font-size: $font-size-default !default;
+$input-font-color: $color-text-regular !default;
+$input-icon-color: $color-text-placeholder !default;
+$input-border: $border-default !default;
+$input-border-radius: $border-default-radius !default;
+$input-border-color-hover: $border-color-hover !default;
+$input-border-color-focus: $color-primary !default;
+$input-clear-hover-color: $color-text-secondary !default;
+$input-placeholder-color: $color-text-placeholder !default;
+$input-background-color: $color-white !default;
+// size
+$input-medium-height: 36px !default;
+$input-medium-font-size: 14px !default;
+$input-small-height: 32px !default;
+$input-small-font-size: 13px !default;
+$input-mini-height: 28px !default;
+$input-mini-font-size: 12px !default;
+// disabled
+$input-disabled-background-color: $disabled-default-background-color !default;
+$input-disabled-border: $disabled-default-border-color !default;
+$input-disabled-color: $disabled-default-color !default;
+$input-disabled-placeholder-color: $color-text-placeholder !default;

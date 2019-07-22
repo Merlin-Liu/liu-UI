@@ -3,6 +3,7 @@
 @import "mixins/mixins";
 
 @include b(input) {
+  position: relative;
   display: inline-block;
   width: 100%;
   font-size: $font-size-default;
@@ -10,7 +11,128 @@
   @include e(inner) {
     display: inline-block;
     width: 100%;
+    box-sizing: border-box;
+    height: $input-height;
+    padding: 0 15px;
+    line-height: $input-height;
+    color: $input-font-color;
     font-size: inherit;
     outline: none;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    transition: $border-default-transition;
+    -webkit-appearance: none;
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $input-border-color-hover;
+    }
+
+    &:focus {
+      border-color: $input-border-color-focus;
+    }
+  }
+
+  .fa {
+    width: 25px;
+    text-align: center;
+    transition: all .3s;
+    line-height: $input-height;
+  }
+
+  @include when(disabled) {
+    @include e(inner) {
+      color: $disabled-default-color;
+      border-color: $disabled-default-border-color;
+      background-color: $disabled-default-background-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  @include e(prefix) {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 5px;
+    color: $input-icon-color;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @include e(suffix) {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 5px;
+    color: $input-icon-color;
+    text-align: center;
+
+    @include e(clear) {
+      cursor: pointer;
+
+      &:hover {
+        color: $input-clear-hover-color;
+      }
+    }
+
+    @include e(eye) {
+      cursor: pointer;
+
+      &:hover {
+        color: $input-clear-hover-color;
+      }
+    }
+  }
+
+  @include m(prefix) {
+    @include e(inner) {
+      padding-left: 30px;
+    }
+  }
+
+  @include m(suffix) {
+    @include e(inner) {
+      padding-right: 30px;
+    }
+  }
+
+  @include m(medium) {
+    font-size: $input-medium-font-size;
+    @include e(inner) {
+      height: $input-medium-height;
+      line-height: $input-medium-height;
+    }
+    .fa {
+      line-height: $input-medium-height;
+    }
+  }
+
+  @include m(small) {
+    font-size: $input-small-font-size;
+    @include e(inner) {
+      height: $input-small-height;
+      line-height: $input-small-height;
+    }
+    .fa {
+      line-height: $input-small-height;
+    }
+  }
+
+  @include m(mini) {
+    font-size: $input-mini-font-size;
+    @include e(inner) {
+      height: $input-mini-height;
+      line-height: $input-mini-height;
+    }
+    .fa {
+      line-height: $input-mini-height;
+    }
   }
 }

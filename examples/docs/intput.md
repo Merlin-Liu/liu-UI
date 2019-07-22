@@ -3,12 +3,16 @@ export default {
   data () {
     return {
       value: '100000',
-      input: '禁用状态',
+      input: '',
       clearableValue: '',
       inputIcon: '',
       password: '1234',
       input1: '',
       input2: '',
+      input5: '',
+      input6: '',
+      input7: '',
+      input8: '',
       textarea: '',
       textarea1: '',
       textarea2: '',
@@ -52,14 +56,14 @@ export default {
 
 ```html
 <template>
-  <liu-input v-model="input" disabled></liu-input>
+  <liu-input v-model="input" disabled placeholder="请输入内容"></liu-input>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      input: '禁用状态'
+      input: ''
     }
   }
 }
@@ -162,6 +166,42 @@ export default {
     return {
       input1: '',
       input2: ''
+    }
+  }
+}
+</script>
+```
+
+:::
+
+##  尺寸
+
+:::demo 提供`size`属性控制输入框尺寸，除了默认的尺寸外，还提供`medium`、`small`、`nimi`三种尺寸。
+
+```html
+<template>
+  <liu-input v-model="input5">
+    <i class="fa fa-id-card-o" slot="prefix"></i>
+  </liu-input>
+  <liu-input v-model="input6" size="medium">
+    <i class="fa fa-id-card-o" slot="prefix"></i>
+  </liu-input>
+  <liu-input v-model="input7" size="small">
+    <i class="fa fa-id-card-o" slot="prefix"></i>
+  </liu-input>
+  <liu-input v-model="input8" size="mini">
+    <i class="fa fa-id-card-o" slot="prefix"></i>
+  </liu-input>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      input5: '',
+      input6: '',
+      input7: '',
+      input8: ''
     }
   }
 }

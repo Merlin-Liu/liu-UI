@@ -39,12 +39,12 @@
         <slot name="suffix" />
         <i
           v-if="isClear"
-          class="fa fa-times-circle"
+          class="fa fa-times-circle liu-input__clear"
           @click="clear"
         />
         <i
           v-if="showPasswordIcon"
-          class="fa fa-eye"
+          class="fa fa-eye liu-input__eye"
           @click="togglePasswordVisible"
         />
         <span v-if="isWordLimitVisible">{{ textLength }}/{{ upperLimit }}</span>
