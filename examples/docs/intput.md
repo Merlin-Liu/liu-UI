@@ -9,6 +9,9 @@
 .demo-block .liu-input:not(:last-child) {
   margin-bottom: 10px;
 }
+.demo-block .liu-textarea:not(:last-child) {
+  margin-bottom: 10px;
+}
 </style>
 
 <script>
@@ -295,7 +298,7 @@ export default {
     v-model="textarea3"
     placeholder="请输入内容"
     ></liu-input>
-  <liu-input type="textarea" maxlength="10" show-word-limit v-model="textarea4" placeholder="请输入内容"></liu-input>
+  <liu-input type="textarea"  maxlength="10" show-word-limit v-model="textarea4" placeholder="请输入内容"></liu-input>
 </template>
 
 <script>

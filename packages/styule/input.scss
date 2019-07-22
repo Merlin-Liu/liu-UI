@@ -213,3 +213,67 @@
     }
   }
 }
+
+@include b(textarea) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: $font-size-default;
+
+  @include e(inner) {
+    width: 100%;
+    resize: vertical;
+    box-sizing: border-box;
+    line-height: 1.5;
+    padding: 5px 15px;
+    font-size: inherit;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    color: $input-font-color;
+    background-color: $input-background-color;
+    transition: $border-default-transition;
+
+    &::placeholder {
+      border-color: $color-text-placeholder;
+    }
+
+    &:hover {
+      border-color: $input-border-color-hover;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $input-border-color-focus;
+    }
+  }
+
+  @include when(disabled) {
+    @include e(inner) {
+      background-color: $input-disabled-background-color;
+      border-color: $disabled-default-border-color;
+      color: $input-disabled-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  @include when(exceed) {
+    @include e(inner) {
+      border-color: $color-danger;
+    }
+
+    .liu-input__count {
+      color: $color-danger;
+    }
+  }
+
+  & .liu-input__count {
+    position: absolute;
+    bottom: 5px;
+    right: 12px;
+    color: $color-info;
+  }
+}
