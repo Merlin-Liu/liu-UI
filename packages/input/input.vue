@@ -27,14 +27,17 @@
 
       <!-- input inner -->
       <input
+        ref="input"
         :type="type === 'password' ? (passwordVisible ? 'password' : 'text') : type"
         :value="value"
         :disabled="disabled"
         :readonly="readonly"
-        :tabindex="tabindex"
         v-bind="$attrs"
         class="liu-input__inner"
         @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @change="handleChange"
       >
 
       <!-- input suffix -->
@@ -95,8 +98,6 @@ export default {
     },
     disabled: Boolean,
     readonly: Boolean,
-    size: String,
-    tabindex: String,
     clearable: {
       type: Boolean,
       default: false
@@ -141,6 +142,10 @@ export default {
 
     isExceed() {
       return this.isWordLimitVisible && this.textLength >= this.upperLimit
+    },
+
+    input() {
+      return this.$refs.input || this.$refs.textarea
     }
   },
 
@@ -155,16 +160,39 @@ export default {
   },
 
   methods: {
+    focus() {
+      this.input.focus()
+    },
+
+    blur() {
+      this.input.blur()
+    },
+
     handleInput(event) {
       this.$emit('input', event.target.value)
     },
 
+    handleFocus(event) {
+      this.$emit('focus', event);
+    },
+
+    handleBlur(event) {
+      this.$emit('blur', event);
+    },
+
+    handleChange(event) {
+      this.$emit('change', event.target.value);
+    },
+
     clear() {
-      this.$emit('input', '')
+      this.$emit('input', '');
+      this.$emit('change', '');
+      this.$emit('clear');
     },
 
     togglePasswordVisible() {
       this.passwordVisible = !this.passwordVisible
+      this.focus()
     },
 
     resizeTextarea() {
