@@ -43,19 +43,6 @@
     line-height: $input-height;
   }
 
-  @include when(disabled) {
-    @include e(inner) {
-      color: $disabled-default-color;
-      border-color: $disabled-default-border-color;
-      background-color: $disabled-default-background-color;
-      cursor: not-allowed;
-
-      &::placeholder {
-        color: $input-disabled-placeholder-color;
-      }
-    }
-  }
-
   @include e(prefix) {
     position: absolute;
     height: 100%;
@@ -88,6 +75,37 @@
       &:hover {
         color: $input-clear-hover-color;
       }
+    }
+
+    @include e(count) {
+      display: inline-flex;
+      height: 100%;
+      padding: 0 5px;
+      align-items: center;
+      color: $color-info;
+      font-size: 12px;
+    }
+  }
+
+  @include when(disabled) {
+    @include e(inner) {
+      color: $disabled-default-color;
+      border-color: $disabled-default-border-color;
+      background-color: $disabled-default-background-color;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  @include when(exceed) {
+    @include e(inner) {
+      border-color: $color-danger;
+    }
+    @include e(count) {
+      color: $color-danger;
     }
   }
 
@@ -133,6 +151,65 @@
     }
     .fa {
       line-height: $input-mini-height;
+    }
+  }
+}
+
+@include b(input-group) {
+  display: inline-table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing:0;
+
+  > .liu-input__inner {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  @include e((prepend, append)) {
+    display: table-cell;
+    vertical-align: middle;
+    width: 1px;
+    padding: 0 20px;
+    color: $color-info;
+    white-space: nowrap;
+    border: $border-default;
+    border-radius: $input-border-radius;
+    background-color: $background-color-default;
+
+    .liu-button, .liu-select {
+      margin: -10px -20px;
+      color: inherit;
+      border-top: 0;
+      border-bottom: 0;
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+
+  @include e(prepend) {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @include e(append) {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @include m(prepend) {
+    .liu-input__inner {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  @include m(append) {
+    .liu-input__inner {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 }

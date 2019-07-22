@@ -1,3 +1,16 @@
+<style>
+.demo-block .liu-input {
+  width: 180px;
+  margin-right: 15px;
+}
+.demo-block .liu-input-group {
+  width: 100%;
+}
+.demo-block .liu-input:not(:last-child) {
+  margin-bottom: 10px;
+}
+</style>
+
 <script>
 export default {
   data () {
@@ -10,6 +23,7 @@ export default {
       input1: '',
       input2: '',
       input5: '',
+      input3: '',
       input6: '',
       input7: '',
       input8: '',
@@ -158,6 +172,10 @@ export default {
   <liu-input v-model="input2">
     <template slot="prepend"><liu-button>btn</liu-button></template>
   </liu-input>
+  
+  <liu-input v-model="input3">
+      <template slot="append"><liu-button>btn</liu-button></template>
+    </liu-input>
 </template>
 
 <script>
@@ -165,7 +183,8 @@ export default {
   data () {
     return {
       input1: '',
-      input2: ''
+      input2: '',
+      input3: ''
     }
   }
 }
@@ -270,7 +289,12 @@ export default {
 
 ```html
 <template>
-  <liu-input maxlength="10" show-word-limit v-model="textarea3" placeholder="请输入内容"></liu-input>
+  <liu-input
+    maxlength="10"
+    show-word-limit
+    v-model="textarea3"
+    placeholder="请输入内容"
+    ></liu-input>
   <liu-input type="textarea" maxlength="10" show-word-limit v-model="textarea4" placeholder="请输入内容"></liu-input>
 </template>
 

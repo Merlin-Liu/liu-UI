@@ -5,13 +5,16 @@
       size ? 'liu-input--' + size : '',
       {
         'is-disabled': disabled,
+        'is-exceed': isExceed,
+        'liu-input-group': $slots.prepend || $slots.append,
+        'liu-input-group--prepend': $slots.prepend,
+        'liu-input-group--append': $slots.append,
         'liu-input--prefix': $slots.prefix,
-        'liu-input--suffix': $slots.suffix || clearable
+        'liu-input--suffix': $slots.suffix || isClear || showPasswordIcon || isWordLimitVisible
       }
     ]"
   >
     <template v-if="type !== 'textarea'">
-
       <!-- input-prepend -->
       <div v-if="$slots.prepend" class="liu-input-group__prepend">
         <slot name="prepend" />
@@ -47,7 +50,9 @@
           class="fa fa-eye liu-input__eye"
           @click="togglePasswordVisible"
         />
-        <span v-if="isWordLimitVisible">{{ textLength }}/{{ upperLimit }}</span>
+        <span v-if="isWordLimitVisible" class="liu-input__count">
+          {{ textLength }}/{{ upperLimit }}
+        </span>
       </span>
 
       <!-- input-append -->
@@ -67,8 +72,9 @@
       class="liu-textarea__inner"
       @input="handleInput"
     />
-    <span v-if="isWordLimitVisible && type === 'textarea'">{{ textLength }}/{{ upperLimit }}</span>
-
+    <span v-if="isWordLimitVisible && type === 'textarea'" class="liu-input__count">
+      {{ textLength }}/{{ upperLimit }}
+    </span>
   </div>
 </template>
 
@@ -118,9 +124,8 @@ export default {
     },
 
     isWordLimitVisible() {
-      const type = this.type
       return this.showWordLimit && this.$attrs.maxlength &&
-        (type === 'text' || type === 'textarea') && !this.disabled && !this.readonly && !this.showPassword
+        (this.type === 'text' || this.type === 'textarea') && !this.disabled && !this.readonly && !this.showPassword
     },
 
     textLength() {
@@ -132,6 +137,10 @@ export default {
 
     upperLimit() {
       return this.$attrs.maxlength
+    },
+
+    isExceed() {
+      return this.isWordLimitVisible && this.textLength >= this.upperLimit
     }
   },
 
