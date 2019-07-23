@@ -7,6 +7,7 @@ import entry from './App.vue'
 import Demo from './components/demo'
 import LiuButton from '../packages/button'
 import LiuInput from '../packages/input'
+import LiuRadio from '../packages/radio'
 import '../packages/styule/index.scss'
 
 // test
@@ -21,6 +22,7 @@ Vue.directive('highlight', el => {
 
 Vue.use(LiuButton)
 Vue.use(LiuInput)
+Vue.use(LiuRadio)
 Vue.component('demo-block', Demo)
 
 new Vue({
