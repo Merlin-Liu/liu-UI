@@ -36,6 +36,19 @@ export default {
   },
 
   computed: {
+    isGroup() {
+      let parent = this.$parent
+      while (parent) {
+        if (parent.$options.componentName === 'LiuRadioGroup') {
+          this._radioGroup = parent;
+          return true
+        } else {
+          parent = parent.$parent
+        }
+      }
+      return false
+    },
+
     raidoValue: {
       get() {
         return this.value
@@ -50,6 +63,9 @@ export default {
   methods: {
     handleChange() {
       this.$emit('change', this.raidoValue);
+      // if (this.isGroup) {
+      //   this.dispatch('LiuRadioGroup', 'handleChange', this.model);
+      // }
     }
   }
 }
