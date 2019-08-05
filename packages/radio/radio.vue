@@ -26,8 +26,12 @@
 </template>
 
 <script>
+import Emitter from '../../src/mixins/emitter'
+
 export default {
   name: 'LiuRadio',
+
+  mixins: [Emitter],
 
   props: {
     value: {},
@@ -39,7 +43,7 @@ export default {
     isGroup() {
       let parent = this.$parent
       while (parent) {
-        if (parent.$options.componentName === 'LiuRadioGroup') {
+        if (parent.$options.name === 'LiuRadioGroup') {
           this._radioGroup = parent;
           return true
         } else {
@@ -51,10 +55,15 @@ export default {
 
     raidoValue: {
       get() {
-        return this.value
+        return this.isGroup ? this._radioGroup.value : this.value
       },
       set(val) {
-        this.$emit('input', val)
+        if (this.isGroup) {
+          this.dispatch('LiuRadioGroup', 'input', val)
+        }
+        else {
+          this.$emit('input', val)
+        }
         this.$refs.radio.checked = this.raidoValue === this.label
       }
     }
@@ -62,10 +71,11 @@ export default {
 
   methods: {
     handleChange() {
-      this.$emit('change', this.raidoValue);
-      // if (this.isGroup) {
-      //   this.dispatch('LiuRadioGroup', 'handleChange', this.model);
-      // }
+      this.$emit('change', this.raidoValue)
+
+      if (this.isGroup) {
+        this.dispatch('LiuRadioGroup', 'handleChange', this.raidoValue);
+      }
     }
   }
 }

@@ -1,19 +1,25 @@
 <template>
   <div>
-    <liu-input v-model="value1" show-word-limit maxlength="10" />
-    <liu-input v-model="value2" type="textarea" />
-    <liu-input v-model="value3" type="textarea" autosize/>
-    <liu-input v-model="value4" :autosize="{ maxRows: 10, minRows: 5 }" type="textarea"/>
+    <liu-button type="danger" @click="handleClick">121212</liu-button>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    value1: '',
-    value2: '',
-    value3: '',
-    value4: ''
-  })
+  }),
+
+  mounted() {
+    this.$on('handleClick', value => {
+      alert('1212121')
+      console.log(value)
+    })
+  },
+
+  methods: {
+    handleClick() {
+      this.$emit('handleClick', 12121212)
+    }
+  }
 }
 </script>
