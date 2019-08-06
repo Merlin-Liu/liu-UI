@@ -23,7 +23,6 @@ export default {
 
   created() {
     this.$on('handleChange', v => {
-      console.log(v)
       this.$emit('change', v)
     })
   },
@@ -40,23 +39,25 @@ export default {
   },
 
   methods: {
-    handleKeydown({target, keyCode, stopPropagation, preventDefault}) {
+    handleKeydown(e) {
+      const target = e.target
+
       const radioList = this.$el.querySelectorAll('[type=radio]')
       const length = radioList.length
       const index = Array.prototype.indexOf.call(radioList, target)
 
-      stopPropagation()
-      preventDefault()
-      switch (keyCode) {
+      e.stopPropagation()
+      e.preventDefault()
+      switch (e.keyCode) {
         case keyCodeMap.LEFT:
         case keyCodeMap.UP:
-          let radio = index === 0 ? radioList[length - 1] : radioList[index - 1]
+          var radio = index === 0 ? radioList[length - 1] : radioList[index - 1]
           radio.focus()
           radio.click()
           break
         case keyCodeMap.RIGHT:
         case keyCodeMap.DOWN:
-          radio = index === length - 1 ? radioList[0] : radioList[index + 1]
+          var radio = index === length - 1 ? radioList[0] : radioList[index + 1]
           radio.focus()
           radio.click()
           break
