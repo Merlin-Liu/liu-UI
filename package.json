@@ -49,6 +49,8 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "transliteration": "^2.1.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
     "url-loader": "^1.1.2",
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.0",

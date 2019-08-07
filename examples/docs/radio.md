@@ -49,6 +49,7 @@
 :::demo 结合el-radio-group元素和子元素el-radio可以实现单选组，在el-radio-group中绑定v-model，在el-radio中设置好label即可，无需再给每一个el-radio绑定变量，另外，还提供了change事件来响应变化，它会传入一个参数value。
 ```html
 <template>
+  <p>{{radio1}}</p>
   <liu-radio-group v-model="radio1">
     <liu-radio label="3">备选项</liu-radio>
     <liu-radio label="6">备选项</liu-radio>

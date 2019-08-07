@@ -34,7 +34,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = () => ({
   mode: isDev ? 'development' : 'production',
   entry: {
-    'liu-UI': './examples/entry.js',
+    'liu-UI': './examples/entry.ts',
     vendor: Object.keys(packagejson.dependencies)
   },
   output: {
@@ -61,6 +61,14 @@ module.exports = () => ({
       {
         test: /\.md$/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.ts$/,
+        exclude: /node_modules|vue\/src/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       },
       {
         test: /\.js$/,
