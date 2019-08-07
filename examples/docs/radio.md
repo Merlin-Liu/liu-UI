@@ -68,3 +68,22 @@
 </script>
 ```
 :::
+
+### ts测试
+
+:::demo
+```html
+<template>
+  <liu-radio-button :prop-a="'sasas'"></liu-radio-button>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+      }
+    }
+  }
+</script>
+```
+:::

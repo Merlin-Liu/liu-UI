@@ -17,8 +17,7 @@ import { componentRouters } from './router.conf'
 
 export default {
   data: () => ({
-    componentRouters,
-    value: ''
+    componentRouters
   })
 }
 </script>
