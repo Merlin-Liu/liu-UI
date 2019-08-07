@@ -46,7 +46,8 @@ export default {
         if (parent.$options.name === 'LiuRadioGroup') {
           this._radioGroup = parent;
           return true
-        } else {
+        }
+        else {
           parent = parent.$parent
         }
       }

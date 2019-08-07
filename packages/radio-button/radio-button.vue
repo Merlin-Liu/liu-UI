@@ -6,28 +6,50 @@
 </template>
 
 <script lang="ts">
+// import { VNode } from 'vue'
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import Emitter from '../../src/mixins/emitter'
 
-@Component
+@Component({
+  name: 'LiuRadioButton',
+  mixins: [Emitter],
+})
 export default class LiuRadioButton extends Vue {
-  name: 'LiuRadioButton'
+  @Prop([Number, String]) readonly value: number | string
+  @Prop([Number, String]) readonly label: number | string
+  @Prop([String, Boolean]) readonly disabled: boolean
 
-  @Prop(Number) readonly propA: number
-  @Prop({ default: 'default value' }) readonly propB!: string
-  @Prop([String, Boolean]) readonly propC: string | boolean
-
-  a: boolean = false
+  _radioGriup: any
 
   get isGroup(): boolean {
-    return this.a
+    let parent: Vue = this.$parent
+    while(parent) {
+      if (parent.$options.name === 'LiuRadioGroup') {
+        this._radioGriup = parent
+        return true
+      }
+      else {
+        parent = parent.$parent
+      }
+    }
+
+    return false
   }
 
-  set isGroup(val: boolean) {
-    this.a = val
+  get raidoValue(): number | string {
+    return this.isGroup ? this._radioGriup.value : this.value
+  }
+  set raidoValue(val: number | string) {
+    if (this.isGroup) {
+      this.dispatch('LiuRadioGroup', 'input', val)
+    }
+    else
+    {
+      this.$emit('input', val)
+    }
   }
 
   btnClick(): void {
-    this.a = !this.a
   }
 }
 </script>
