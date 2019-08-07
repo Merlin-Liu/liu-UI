@@ -74,7 +74,7 @@
 :::demo
 ```html
 <template>
-  <liu-radio-button :prop-a="'sasas'"></liu-radio-button>
+  <liu-radio-button></liu-radio-button>
 </template>
 
 <script>
