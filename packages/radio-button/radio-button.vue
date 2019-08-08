@@ -1,8 +1,34 @@
 <template>
-  <div>
-    <liu-button type="primary" round size="mini" @click="btnClick">Click Me</liu-button>
-    <p>{{a}}</p>
-  </div>
+  <label
+    :class="[
+      radioSize ? 'liu-radio-button--' + radioSize : '',
+      {
+        'is-disabled': isDisabled,
+        'is-active': raidoValue === label
+      }
+    ]"
+    class="liu-radio-button"
+  >
+
+    <input
+      class="liu-radio-button__orig-radio"
+      :value="label"
+      type="radio"
+      v-model="raidoValue"
+      :name="name"
+      :disabled="isDisabled"
+      tabindex="-1"
+      @change="handleChange"
+    />
+
+    <span
+      class="liu-radio-button__inner"
+      :style="raidoValue === label ? activeStyle : null"
+    >
+      <slot/>
+      <template v-if="!$slots.default">{{label}}</template>
+    </span>
+  </label>
 </template>
 
 <script lang="ts">
@@ -11,23 +37,18 @@ import { Vue, Component, Prop, Mixins } from 'vue-property-decorator'
 import Emitter from '../../src/mixins/emitter'
 
 @Component({
-  name: 'LiuRadioButton',
-  mixins: [Emitter],
+  name: 'LiuRadioButton'
 })
 export default class LiuRadioButton extends Mixins(Emitter) {
-  @Prop([Number, String]) readonly value: number | string
-  @Prop([Number, String]) readonly label: number | string
-  @Prop([String, Boolean]) readonly disabled: boolean
+  @Prop({ type: [Number, String], required: true }) readonly label: number | string
+  @Prop([Boolean]) readonly disabled: boolean
+  @Prop([String]) readonly name: string
 
-  // todo
-  _radioGroup: any
-
-  get isGroup(): boolean {
+  private get parentRadioGroup(): Vue | false | any {
     let parent: Vue = this.$parent
     while(parent) {
       if (parent.$options.name === 'LiuRadioGroup') {
-        this._radioGroup = parent
-        return true
+        return parent
       }
       else {
         parent = parent.$parent
@@ -37,20 +58,41 @@ export default class LiuRadioButton extends Mixins(Emitter) {
     return false
   }
 
-  get raidoValue(): number | string {
-    return this.isGroup ? this._radioGroup.value : this.value
+  private get raidoValue(): number | string {
+    return this.parentRadioGroup.value
   }
-  set raidoValue(val: number | string) {
-    if (this.isGroup) {
-      this.dispatch('LiuRadioGroup', 'input', val)
-    }
-    else
-    {
-      this.$emit('input', val)
+  private set raidoValue(val: number | string) {
+    this.parentRadioGroup.$emit('input', val)
+  }
+
+  get isDisabled(): boolean {
+    return this.disabled || this.parentRadioGroup.disabled
+  }
+
+  get radioSize(): string {
+    return this.parentRadioGroup.size
+  }
+
+  get activeStyle(): Object {
+    const { fill = '', textColor: color = '' } = this.parentRadioGroup
+    return {
+      backgroundColor: fill,
+      borderColor: fill,
+      boxShadow: fill ? `-1px 0 0 0 ${fill}` : '',
+      color
     }
   }
 
-  btnClick(): void {
+  created() {
+    if (!this.parentRadioGroup) {
+      console.error('liu-UI errors!', 'radio-button组件必须被radio-group包裹')
+    }
+  }
+
+  handleChange(): void {
+    this.$nextTick(() => {
+      this.dispatch('LiuRadioGroup', 'handleChange', this.raidoValue)
+    })
   }
 }
 </script>

@@ -18,7 +18,11 @@ export default {
   props: {
     value: {},
     size: String,
-    disabled: Boolean
+    disabled: Boolean,
+    // radio激活时填充颜色
+    fill: String,
+    // radio激活时文本颜色
+    textColor: String
   },
 
   created() {

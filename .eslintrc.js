@@ -128,6 +128,7 @@ module.exports = {
         'no-sparse-arrays': 2,
         'no-this-before-super': 2,
         'no-throw-literal': 2,
+        'no-unused-vars': 0,
         'no-trailing-spaces': 2,
         'no-undef': 2,
         'no-undef-init': 2,

@@ -3,7 +3,8 @@
     data () {
       return {
         radio: '1',
-        radio1: '3'
+        radio1: '3',
+        radio2: '广州'
       }
     },
     
@@ -20,9 +21,9 @@
 
 ### 基础用法
 
-由于选项默认可见，不宜过多，若选项过多，建议使用 Select 选择器。
+由于选项默认可见，不宜过多，若选项过多，建议使用`Select`选择器。
 
-:::demo 要使用 Radio 组件，只需要设置v-model绑定变量，选中意味着变量的值为相应 Radio label属性的值，label可以是String、Number或Boolean。
+:::demo 要使用`Radio`组件，只需要设置`v-model`绑定变量，选中意味着变量的值为相应`Radio label`属性的值，`label`可以是`String、Number`或`Boolean`。
 ```html
 <template>
   <p>radio：{{radio}}</p>
@@ -46,7 +47,7 @@
 
 适用于在多个互斥的选项中选择的场景。
 
-:::demo 结合el-radio-group元素和子元素el-radio可以实现单选组，在el-radio-group中绑定v-model，在el-radio中设置好label即可，无需再给每一个el-radio绑定变量，另外，还提供了change事件来响应变化，它会传入一个参数value。
+:::demo 结合`liu-radio-group`元素和子元素`liu-radio`可以实现单选组，在`liu-radio-group`中绑定`v-model`，在`liu-radio`中设置好`label`即可，无需再给每一个`liu-radio`绑定变量，另外，还提供了`change`事件来响应变化，它会传入一个参数value。
 ```html
 <template>
   <p>{{radio1}}</p>
@@ -69,18 +70,26 @@
 ```
 :::
 
-### ts测试
+### 按钮样式
 
-:::demo
+按钮样式的单选组合。
+
+:::demo 只需要把`liu-radio`元素换成`liu-radio-button`元素即可，此外，`Liu-UI`还提供了`size`属性。
 ```html
 <template>
-  <liu-radio-button></liu-radio-button>
+  <liu-radio-group v-model="radio2" @change="change">
+    <liu-radio-button label="广州"></liu-radio-button>
+    <liu-radio-button label="深圳"></liu-radio-button>
+    <liu-radio-button label="上海"></liu-radio-button>
+    <liu-radio-button label="西二旗"></liu-radio-button>
+  </liu-radio-group>
 </template>
 
 <script>
   export default {
     data () {
       return {
+        radio2: '广州'
       }
     }
   }

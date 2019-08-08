@@ -64,7 +64,7 @@ module.exports = () => ({
       },
       {
         test: /\.ts$/,
-        exclude: /node_modules|vue\/src/,
+        exclude: /node_modules/,
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/]
@@ -162,7 +162,7 @@ module.exports = () => ({
     alias: {
       vue: 'vue/dist/vue.js'
     },
-    extensions: ['.js', '.vue', '.json', '.css']
+    extensions: ['.js', '.ts', '.vue', '.json', '.css']
   },
   devServer: {
     clientLogLevel: 'warning',
