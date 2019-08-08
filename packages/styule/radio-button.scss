@@ -1,0 +1,95 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+@import "mixins/button";
+@import "mixins/utils";
+
+@include b(radio-button) {
+  position: relative;
+  display: inline-block;
+  outline: none;
+
+  @include e(inner) {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    border: $border-default;
+    border-left: 0;
+    text-align: center;
+    color: $button-default-color;
+    font-weight: $font-weight-default;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: $button-default-bgc;
+    transition: $all-transition;
+    -webkit-appearance: none;
+
+    @include button-size($button-padding-vertical, $button-padding-horizontal, $button-font-size, 0);
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &:first-child {
+    .liu-radio-button__inner {
+      border-left: $border-default;
+      border-radius: $border-default-radius 0 0 $border-default-radius;
+    }
+  }
+  &:last-child {
+    .liu-radio-button__inner {
+      border-radius: 0 $border-default-radius $border-default-radius 0;
+    }
+  }
+
+  @include e(orig-radio) {
+    position: absolute;
+    opacity: 0;
+    outline: none;
+    z-index: -1;
+
+    &:checked {
+      & + .liu-radio-button__inner {
+        color: $radio-button-checked-font-color;
+        background-color: $radio-button-checked-background-color;
+        border-color: $radio-button-checked-border-color;
+        box-shadow: -1px 0 0 0 $radio-button-checked-border-color;
+      }
+    }
+
+    &:disabled {
+      & + .liu-radio-button__inner {
+        color: $button-disabled-color;
+        box-shadow: none;
+        border-color: $button-disabled-border-color;
+        background-color: $button-disabled-full;
+        cursor: not-allowed;
+      }
+      &:checked + .liu-radio-button__inner {
+        background-color: $radio-button-disabled-checked-fill;
+      }
+    }
+  }
+
+  @include m(medium) {
+    & .liu-radio-button__inner {
+      @include button-size($button-medium-padding-vertical, $button-medium-padding-horizontal, $button-medium-font-size, 0);
+    }
+  }
+  @include m(small) {
+    & .liu-radio-button__inner {
+      @include button-size($button-small-padding-vertical, $button-small-padding-horizontal, $button-small-font-size, 0);
+    }
+  }
+  @include m(mini) {
+    & .liu-radio-button__inner {
+      @include button-size($button-mini-padding-vertical, $button-mini-padding-horizontal, $button-mini-font-size, 0);
+    }
+  }
+
+}

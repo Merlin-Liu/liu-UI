@@ -39,6 +39,7 @@ $border-color-light: #E4E7ED !default;
 $border-color-lighter: #ebeef5 !default;
 $border-color-hover: $color-text-placeholder !default;
 $border-radius-circle: 100% !default;
+$border-color-extra-light: #F2F6FC !default;
 
 /* disabled */
 $disabled-default-background-color: $background-color-default !default;
@@ -46,6 +47,7 @@ $disabled-default-color: $color-text-placeholder !default;
 $disabled-default-border-color: $border-color-light !default;
 
 // transition
+$all-transition: all .3s cubic-bezier(.645,.045,.355,1) !default;
 $border-default-transition: border-color .2s cubic-bezier(.645,.045,.355,1) !default;
 
 
@@ -144,3 +146,9 @@ $radio-disabled-icon-color: $background-color-default !default;
 $radio-disabled-checked-input-border-color: $disabled-default-border-color !default;
 $radio-disabled-checked-input-fill: $background-color-default !default;
 $radio-disabled-checked-icon-color: $color-text-placeholder !default;
+
+$radio-button-font-size: $font-size-default !default;
+$radio-button-checked-background-color: $color-primary !default;
+$radio-button-checked-font-color: $color-white !default;
+$radio-button-checked-border-color: $color-primary !default;
+$radio-button-disabled-checked-fill: $border-color-extra-light !default;

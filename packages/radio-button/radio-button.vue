@@ -73,7 +73,7 @@ export default class LiuRadioButton extends Mixins(Emitter) {
     return this.parentRadioGroup.size
   }
 
-  get activeStyle(): Object {
+  get activeStyle(): object {
     const { fill = '', textColor: color = '' } = this.parentRadioGroup
     return {
       backgroundColor: fill,

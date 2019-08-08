@@ -9,6 +9,9 @@
         radio4: '1',
         radio5: '1',
         radio6: '1',
+        radio7: '深圳',
+        radio8: '上海',
+        radio9: '西二旗'
       }
     },
     
@@ -19,6 +22,13 @@
     }
   }
 </script>
+
+<style>
+  .demo-block .liu-radio-group {
+    display: block;
+    margin-bottom: 10px;
+  }
+</style>
 
 # 单选框
 在一组备选项中进行单选
@@ -83,7 +93,28 @@
 <template>
   <p>radio2：{{radio2}}</p>
   <liu-radio-group v-model="radio2" @change="change">
-    <liu-radio-button label="广州"></liu-radio-button>
+    <liu-radio-button label="广州" disabled></liu-radio-button>
+    <liu-radio-button label="深圳"></liu-radio-button>
+    <liu-radio-button label="上海"></liu-radio-button>
+    <liu-radio-button label="西二旗"></liu-radio-button>
+  </liu-radio-group>
+
+  <liu-radio-group v-model="radio7" size="medium" @change="change">
+    <liu-radio-button label="广州" disabled></liu-radio-button>
+    <liu-radio-button label="深圳"></liu-radio-button>
+    <liu-radio-button label="上海"></liu-radio-button>
+    <liu-radio-button label="西二旗"></liu-radio-button>
+  </liu-radio-group>
+
+  <liu-radio-group v-model="radio8" size="small" @change="change">
+    <liu-radio-button label="广州" disabled></liu-radio-button>
+    <liu-radio-button label="深圳"></liu-radio-button>
+    <liu-radio-button label="上海"></liu-radio-button>
+    <liu-radio-button label="西二旗"></liu-radio-button>
+  </liu-radio-group>
+
+  <liu-radio-group v-model="radio9" size="mini" @change="change">
+    <liu-radio-button label="广州" disabled></liu-radio-button>
     <liu-radio-button label="深圳"></liu-radio-button>
     <liu-radio-button label="上海"></liu-radio-button>
     <liu-radio-button label="西二旗"></liu-radio-button>
@@ -94,7 +125,10 @@
   export default {
     data () {
       return {
-        radio2: '广州'
+        radio2: '广州',
+        radio7: '深圳',
+        radio8: '上海',
+        radio9: '西二旗'
       }
     }
   }
