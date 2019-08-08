@@ -81,6 +81,7 @@
 :::demo 只需要把`liu-radio`元素换成`liu-radio-button`元素即可，此外，`Liu-UI`还提供了`size`属性。
 ```html
 <template>
+  <p>radio2：{{radio2}}</p>
   <liu-radio-group v-model="radio2" @change="change">
     <liu-radio-button label="广州"></liu-radio-button>
     <liu-radio-button label="深圳"></liu-radio-button>
