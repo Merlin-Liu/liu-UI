@@ -4,7 +4,11 @@
       return {
         radio: '1',
         radio1: '3',
-        radio2: '广州'
+        radio2: '广州',
+        radio3: '1',
+        radio4: '1',
+        radio5: '1',
+        radio6: '1',
       }
     },
     
@@ -90,6 +94,48 @@
     data () {
       return {
         radio2: '广州'
+      }
+    }
+  }
+</script>
+```
+:::
+
+### 带有边框
+
+:::demo 设置`border`属性可以渲染为带有边框的单选框。
+```html
+<template>
+  <div>
+    <liu-radio v-model="radio3" label="1" border>备选项1</liu-radio>
+    <liu-radio v-model="radio3" label="2" border>备选项2</liu-radio>
+  </div>
+  <div style="margin-top: 20px">
+    <liu-radio v-model="radio4" label="1" border size="medium">备选项1</liu-radio>
+    <liu-radio v-model="radio4" label="2" border size="medium">备选项2</liu-radio>
+  </div>
+  <div style="margin-top: 20px">
+    <liu-radio-group v-model="radio5" size="small">
+      <liu-radio label="1" border>备选项1</liu-radio>
+      <liu-radio label="2" border disabled>备选项2</liu-radio>
+    </liu-radio-group>
+  </div>
+  <div style="margin-top: 20px">
+    <liu-radio-group v-model="radio6" size="mini" disabled>
+      <liu-radio label="1" border>备选项1</liu-radio>
+      <liu-radio label="2" border>备选项2</liu-radio>
+    </liu-radio-group>
+  </div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        radio3: '1',
+        radio4: '1',
+        radio5: '1',
+        radio6: '1',
       }
     }
   }

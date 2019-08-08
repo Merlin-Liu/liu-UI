@@ -35,13 +35,15 @@ $border-default-style: solid !default;
 $border-default-color: #dcdfe6 !default;
 $border-default: $border-default-width $border-default-style $border-default-color !default;
 $border-default-radius: 4px !default;
+$border-color-light: #E4E7ED !default;
 $border-color-lighter: #ebeef5 !default;
 $border-color-hover: $color-text-placeholder !default;
+$border-radius-circle: 100% !default;
 
 /* disabled */
 $disabled-default-background-color: $background-color-default !default;
 $disabled-default-color: $color-text-placeholder !default;
-$disabled-default-border-color: $border-color-lighter !default;
+$disabled-default-border-color: $border-color-light !default;
 
 // transition
 $border-default-transition: border-color .2s cubic-bezier(.645,.045,.355,1) !default;
@@ -104,3 +106,41 @@ $input-disabled-background-color: $disabled-default-background-color !default;
 $input-disabled-border: $disabled-default-border-color !default;
 $input-disabled-color: $disabled-default-color !default;
 $input-disabled-placeholder-color: $color-text-placeholder !default;
+
+/* radio */
+$radio-font-size: $font-size-default !default;
+$radio-font-color: $color-text-regular !default;
+$radio-font-weight: $font-weight-default !default;
+$radio-input-border: $border-default !default;
+$radio-input-border-radius: $border-radius-circle !default;
+$radio-input-height: 14px !default;
+$radio-input-width: 14px !default;
+$radio-input-background-color: $color-white !default;
+$radio-input-border-color-hover: $color-primary !default;
+$radio-checked-font-color: $color-primary !default;
+$radio-checked-input-border-color: $color-primary !default;
+$radio-checked-input-background-color: $color-white !default;
+$radio-checked-icon-color: $color-primary !default;
+
+$radio-bordered-padding: 12px 16px 0 12px !default;
+$radio-bordered-height: 40px !default;
+
+$radio-bordered-medium-padding: 10px 20px 0 10px !default;
+$radio-bordered-small-padding: 8px 15px 0 10px !default;
+$radio-bordered-mini-padding: 6px 15px 0 10px !default;
+$radio-bordered-medium-input-height: 14px !default;
+$radio-bordered-medium-input-width: 14px !default;
+$radio-bordered-medium-height: 36px !default;
+$radio-bordered-small-input-height: 12px !default;
+$radio-bordered-small-input-width: 12px !default;
+$radio-bordered-small-height: 32px !default;
+$radio-bordered-mini-input-height: 12px !default;
+$radio-bordered-mini-input-width: 12px !default;
+$radio-bordered-mini-height: 28px !default;
+
+$radio-disabled-input-border-color: $disabled-default-border-color !default;
+$radio-disabled-input-fill: $background-color-default !default;
+$radio-disabled-icon-color: $background-color-default !default;
+$radio-disabled-checked-input-border-color: $disabled-default-border-color !default;
+$radio-disabled-checked-input-fill: $background-color-default !default;
+$radio-disabled-checked-icon-color: $color-text-placeholder !default;

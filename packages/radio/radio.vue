@@ -4,7 +4,7 @@
       (border && radioSize) ? 'liu-radio--' + radioSize : '',
       {
         'is-disabled': isDisabled,
-        'is-border': border,
+        'is-bordered': border,
         'is-checked': raidoValue === label
       }
     ]"
@@ -20,6 +20,7 @@
       <input
         ref="radio"
         type="radio"
+        class="liu-radio__original"
         :name="name"
         :disabled="isDisabled"
         :value="label"
@@ -83,7 +84,9 @@ export default {
     },
 
     isDisabled() {
-      return this.isGroup ? this.parentRadioGroup.disabled : this.disabled
+      return this.isGroup
+        ? this.parentRadioGroup.disabled || this.disabled
+        : this.disabled
     },
 
     radioSize() {

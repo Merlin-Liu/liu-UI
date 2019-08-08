@@ -1,0 +1,178 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+@include b(radio) {
+  position: relative;
+  display: inline-block;
+  margin-right: 30px;
+  line-height: 1;
+  color: $radio-font-color;
+  font-weight: $radio-font-weight;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  @include utils-user-select(none);
+
+  @include when(bordered) {
+    box-sizing: border-box;
+    height: $radio-bordered-height;
+    padding: $radio-bordered-padding;
+    border: $border-default;
+    border-radius: $border-default-radius;
+
+    &.is-checked {
+      border-color: $color-primary;
+    }
+
+    &.is-disabled {
+      cursor: not-allowed;
+      border-color: $border-color-lighter;
+    }
+  }
+
+  @include m(medium) {
+    &.is-bordered {
+      padding: $radio-bordered-medium-padding;
+      border-radius: $button-medium-border-radius;
+      height: $radio-bordered-medium-height;
+      .liu-radio__label {
+        font-size: $button-medium-font-size;
+      }
+      .liu-radio__inner {
+        height: $radio-bordered-medium-input-height;
+        width: $radio-bordered-medium-input-width;
+      }
+    }
+  }
+  @include m(small) {
+    &.is-bordered {
+      padding: $radio-bordered-small-padding;
+      border-radius: $button-small-border-radius;
+      height: $radio-bordered-small-height;
+      .liu-radio__label {
+        font-size: $button-small-font-size;
+      }
+      .liu-radio__inner {
+        height: $radio-bordered-small-input-height;
+        width: $radio-bordered-small-input-width;
+      }
+    }
+  }
+  @include m(mini) {
+    &.is-bordered {
+      padding: $radio-bordered-mini-padding;
+      border-radius: $button-mini-border-radius;
+      height: $radio-bordered-mini-height;
+      .liu-radio__label {
+        font-size: $button-mini-font-size;
+      }
+      .liu-radio__inner {
+        height: $radio-bordered-mini-input-height;
+        width: $radio-bordered-mini-input-width;
+      }
+    }
+  }
+
+  @include e(input) {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+
+    @include when(disabled) {
+      cursor: not-allowed;
+
+      .liu-radio__inner {
+        border-color: $radio-disabled-input-border-color;
+        background-color: $radio-disabled-input-fill;
+        cursor: not-allowed;
+
+        &::after {
+          cursor: not-allowed;
+        }
+      }
+
+      &.is-checked {
+        .liu-radio__inner {
+          background-color: $radio-disabled-checked-input-fill;
+          border-color: $radio-disabled-checked-input-border-color;
+
+          &::after {
+            background-color: $radio-disabled-checked-icon-color;
+          }
+        }
+      }
+
+      & + span.liu-radio__label {
+        color: $color-text-placeholder;
+      }
+    }
+
+    @include when(checked) {
+      .liu-radio__inner {
+        border-color: $radio-checked-input-border-color;
+        background: $radio-checked-icon-color;
+
+        &::after {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      & + .liu-radio__label {
+        color: $radio-checked-font-color;
+      }
+    }
+  }
+
+  @include e(inner) {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: $radio-input-width;
+    height: $radio-input-height;
+    border: $radio-input-border;
+    border-radius: $radio-input-border-radius;
+    background-color: $radio-input-background-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $radio-input-border-color-hover;
+    }
+
+    &::after {
+      width: 4px;
+      height: 4px;
+      border-radius: $radio-input-border-radius;
+      background-color: $color-white;
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform .15s ease-in;
+    }
+  }
+
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+
+
+  @include e(label) {
+    font-size: $radio-font-size;
+    padding-left: 10px;
+  }
+}
