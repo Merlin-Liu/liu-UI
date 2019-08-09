@@ -35,6 +35,7 @@
 // import { VNode } from 'vue'
 import { Vue, Component, Prop, Mixins } from 'vue-property-decorator'
 import Emitter from '../../src/mixins/emitter'
+import { LiuRadioGroup } from '../../types';
 
 @Component({
   name: 'LiuRadioButton'
@@ -44,11 +45,14 @@ export default class LiuRadioButton extends Mixins(Emitter) {
   @Prop([Boolean]) readonly disabled: boolean
   @Prop([String]) readonly name: string
 
-  private get parentRadioGroup(): Vue | false | any {
-    let parent: Vue = this.$parent
+  parentRadioGroup: LiuRadioGroup
+
+  private get hasParentRadioGroup(): boolean {
+    let parent = this.$parent
     while(parent) {
-      if (parent.$options.name === 'LiuRadioGroup') {
-        return parent
+       if (parent.$options.name === 'LiuRadioGroup') {
+        this.parentRadioGroup = parent as LiuRadioGroup
+        return true
       }
       else {
         parent = parent.$parent
@@ -84,7 +88,7 @@ export default class LiuRadioButton extends Mixins(Emitter) {
   }
 
   created() {
-    if (!this.parentRadioGroup) {
+    if (!this.hasParentRadioGroup) {
       console.error('liu-UI errors!', 'radio-button组件必须被radio-group包裹')
     }
   }

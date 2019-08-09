@@ -178,6 +178,16 @@
 ```
 :::
 
+### error examples
+
+:::demo 
+```html
+<template>
+  <liu-radio-button label="err"></liu-radio-button>
+</template>
+```
+:::
+
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
