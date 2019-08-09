@@ -46,6 +46,12 @@
       border-radius: 0 $border-default-radius $border-default-radius 0;
     }
   }
+  // 只有一个radio-button的时候
+  &:first-child:last-child {
+    .liu-radio-button__inner {
+      border-radius: $border-default-radius;
+    }
+  }
 
   @include e(orig-radio) {
     position: absolute;

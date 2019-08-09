@@ -59,6 +59,7 @@ export default class LiuRadioButton extends Mixins(Emitter) {
       }
     }
 
+    this.parentRadioGroup = {} as LiuRadioGroup
     return false
   }
 
