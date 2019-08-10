@@ -1,7 +1,7 @@
 import ResizeObserver from 'resize-observer-polyfill'
 import { ObserverElement } from '../../types'
 
-const resizeHandler = function(entries: any[]) {
+const resizeHandler:ResizeObserverCallback = function(entries: ResizeObserverEntry[]) {
   for (const entry of entries) {
     const listeners = (entry.target as ObserverElement).__resizeListeners
 
