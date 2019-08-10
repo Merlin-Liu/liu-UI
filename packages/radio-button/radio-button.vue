@@ -42,8 +42,8 @@ import { LiuRadioGroup } from '../../types';
 })
 export default class LiuRadioButton extends Mixins(Emitter) {
   @Prop({ type: [Number, String], required: true }) readonly label: number | string
-  @Prop([Boolean]) readonly disabled: boolean
-  @Prop([String]) readonly name: string
+  @Prop(Boolean) readonly disabled: boolean
+  @Prop(String) readonly name: string
 
   parentRadioGroup: LiuRadioGroup
 
