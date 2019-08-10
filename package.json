@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "highlight.js": "^9.15.8",
+    "resize-observer-polyfill": "^1.5.1",
     "vue": "^2.5.16",
     "vue-property-decorator": "^8.2.1",
     "vue-router": "^3.0.1",
