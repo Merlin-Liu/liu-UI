@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import "vue-tsx-support/enable-check";
 import router from './router.conf'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'

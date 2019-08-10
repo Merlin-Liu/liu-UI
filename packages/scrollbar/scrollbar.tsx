@@ -1,4 +1,7 @@
 import { Vue, Component, Prop, Mixins } from 'vue-property-decorator'
+import { VNode, CreateElement } from 'vue'
+
+import { warpJSX } from './element'
 
 @Component({
   name: 'LiuScorllbar'
@@ -20,4 +23,21 @@ export default class LiuScorllbar extends Vue {
   private get warp(): Element {
     return this.$refs.warp as Element
   }
+
+  private render(createElement: CreateElement) {
+    const style = this.wrapStyle
+
+    const view = createElement(this.tag, {
+      class: ['liu-scrollbar__view', this.viewClass],
+      style: this.viewStyle,
+      ref: 'resize'
+    }, this.$slots.default)
+
+    const wrap:JSX.Element = warpJSX
+  }
+
+  private handleScroll(): void {
+
+  }
 }
+

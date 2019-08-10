@@ -162,7 +162,7 @@ module.exports = () => ({
     alias: {
       vue: 'vue/dist/vue.js'
     },
-    extensions: ['.js', '.ts', '.vue', '.json', '.css']
+    extensions: ['.js', '.ts', 'tsx', '.vue', '.json', '.css']
   },
   devServer: {
     clientLogLevel: 'warning',
