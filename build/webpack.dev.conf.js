@@ -63,15 +63,18 @@ module.exports = () => ({
         use: 'vue-loader'
       },
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {appendTsxSuffixTo: [/\.vue$/]}
+          }
+        ]
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: ['babel-loader'],
         exclude: /node_modules/
       },

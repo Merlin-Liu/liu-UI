@@ -1,5 +1,5 @@
-import LiuScrollbar from './scroll'
+import LiuScrollBar from './scrollbar.tsx'
 
-LiuScrollbar.install = Vue => Vue.component(LiuScrollbar.name, LiuScrollbar)
+LiuScrollBar.install = Vue => Vue.component(LiuScrollBar.name, LiuScrollBar)
 
-export default LiuScrollbar
+export default LiuScrollBar
