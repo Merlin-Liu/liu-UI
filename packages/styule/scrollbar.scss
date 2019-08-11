@@ -1,0 +1,14 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+@import "mixins/utils";
+
+@include b(scrollbar) {
+  overflow: hidden;
+  position: relative;
+
+  @include e(wrap) {
+    height: 100%;
+    overflow: scroll;
+  }
+}
