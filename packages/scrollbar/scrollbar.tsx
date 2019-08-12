@@ -45,7 +45,6 @@ export default class LiuScrollBar extends Vue {
   }
 
   private handleScroll(): void {
-    console.log('scroll !')
   }
 }
 
