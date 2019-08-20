@@ -4,8 +4,8 @@ import { Vue, Component } from 'vue-property-decorator'
   name: 'Bar'
 })
 export default class Bar extends Vue {
-  private render() {
-    return <div></div>
+  render(h) {
+    return h('div', {}, 'i not native bar')
   }
 }
 
