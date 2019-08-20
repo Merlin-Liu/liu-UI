@@ -1,10 +1,15 @@
 import { Vue, Component, Prop, Mixins } from 'vue-property-decorator'
 import { VNode, CreateElement, VNodeChildren } from 'vue'
 
+import Bar from './bar.tsx'
+
 // import { warpJSX } from './element'
 
 @Component({
-  name: 'LiuScrollBar'
+  name: 'LiuScrollBar',
+  components: {
+    Bar
+  }
 })
 export default class LiuScrollBar extends Vue {
   @Prop(Boolean) readonly native: boolean
@@ -30,21 +35,43 @@ export default class LiuScrollBar extends Vue {
     const view = h(this.tag, {
       class: ['liu-scrollbar__view', this.viewClass],
       style: this.viewStyle,
-      ref: 'resize'
+      ref: 'resize',
     }, this.$slots.default)
 
-    const wrap= ([<div
-      ref="wrap"
-      style={ style }
-      onScroll={ this.handleScroll }
-      class={ [this.wrapClass, 'liu-scrollbar__wrap'] }>
-      { [view] }
-    </div>])
+    const wrap= (
+      <div
+        ref="wrap"
+        style={ style }
+        onScroll={ this.handleScroll }
+        class={ [this.wrapClass, 'liu-scrollbar__wrap'] }>
+        { [view] }
+      </div>
+    )
 
-    return h('div', {class: 'liu-scrollbar'}, wrap)
+    let nodes: Array<VNodeChildren>
+    if (this.native) {
+      nodes = [
+        wrap,
+        <Bar/>,
+        <Bar/>
+      ]
+    }
+    else {
+      nodes = [
+        <div
+          ref="wrap"
+          style={ style }
+          class={ [this.wrapClass, 'liu-scrollbar__wrap'] }>
+          { [view] }
+        </div>
+      ]
+    }
+
+    return h('div', {class: 'liu-scrollbar'}, nodes)
   }
 
   private handleScroll(): void {
+    console.log('scoll!')
   }
 }
 
