@@ -1,2 +1,3 @@
 # liu-UI
-基于Vue组件库
+
+一个基于Vue、TypeScript的组件库
