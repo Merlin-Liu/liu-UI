@@ -49,12 +49,8 @@ export default class LiuScrollBar extends Vue {
     )
 
     let nodes: Array<VNodeChildren>
-    if (this.native) {
-      nodes = [
-        wrap,
-        <Bar/>,
-        <Bar/>
-      ]
+    if (!this.native) {
+      nodes = [ wrap, <Bar/>, <Bar/> ]
     }
     else {
       nodes = [

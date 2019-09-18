@@ -8,7 +8,7 @@ export default class Bar extends Vue {
   @Prop(Boolean) readonly vertical: boolean
 
   render(createElement: CreateElement) {
-    return createElement('div', {}, 'i not native bar')
+    return createElement('div', 'i not native bar')
   }
 
   private get wrap(): Element {
