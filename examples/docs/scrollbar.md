@@ -7,7 +7,7 @@ scrollbar
 :::demo 
 ```html
 <template>
-  <liu-scroll-bar native style="height: 200px;">
+  <liu-scroll-bar tag="p" style="height: 200px;">
     <p v-for="(item, index) in Array(20)" :key="index">{{index}}</p>
   </liu-scroll-bar>
 </template>
