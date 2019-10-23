@@ -20,6 +20,8 @@
 
 文档中的组件未显示，如需查看组件效果，执行上述命令
 
+已完成的组件：
+
 * [按钮](./examples/docs/button.md)
 * [输入框](./examples/docs/input.md)
 * [单选框](./examples/docs/radio.md)
