@@ -1,24 +1,25 @@
 <template>
   <div>
+    <liu-input></liu-input>
     <slot></slot>
   </div>
 </template>
 
-<script lang="ts">
+<script type="text/babel">
 import { Component, Prop, Mixins } from 'vue-property-decorator'
 
 // component
+import LiuInput from '../input'
 import LiuOption from './option.vue'
 
 // mixin
 import Emitter from '../../src/mixins/emitter'
 
-@Component({
+export default {
   name: 'LiuSelect',
   components: {
+    LiuInput,
     LiuOption
   }
-})
-export default class LiuSelect extends Mixins(Emitter) {
 }
 </script>

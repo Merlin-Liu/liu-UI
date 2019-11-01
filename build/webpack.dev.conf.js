@@ -138,7 +138,7 @@ module.exports = () => ({
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: isDev ? 'liu-UI (dev)' : 'liu-UI',
+      title: 'liu-UI',
       template: './examples/index.tpl',
       filename: './index.html',
       minify: {
