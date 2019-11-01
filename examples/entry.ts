@@ -13,6 +13,8 @@ import LiuRadio from '../packages/radio'
 import LiuRadioGroup from '../packages/radio-group'
 import LiuRadioButton from '../packages/radio-button'
 import LiuScrollBar from '../packages/scrollbar'
+import LiuSelect from '../packages/select'
+import LiuOption from '../packages/option'
 
 import '../packages/styule/index.scss'
 
@@ -32,6 +34,8 @@ Vue.use(LiuRadio)
 Vue.use(LiuRadioGroup)
 Vue.use(LiuRadioButton)
 Vue.use(LiuScrollBar)
+Vue.use(LiuSelect)
+Vue.use(LiuOption)
 
 Vue.component('demo-block', Demo)
 
