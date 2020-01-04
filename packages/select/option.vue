@@ -1,6 +1,8 @@
 <template>
-  <li>
-    <slot>{{ currentLabel }}</slot>
+  <li class="liu-select-dropdown__item">
+    <slot>
+      <span>{{ currentLabel }}</span>
+    </slot>
   </li>
 </template>
 

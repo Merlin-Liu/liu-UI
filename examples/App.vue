@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <ul>
+    <ul class="left-slider">
       <li v-for="(item, index) in componentRouters" :key="index">
         <router-link
           tag="a"
@@ -26,7 +26,7 @@ export default {
   .container {
     width: 960px;
     margin: 0 auto;
-    ul {
+    .left-slider {
       position: fixed;
       left: 0;
       top: 0;

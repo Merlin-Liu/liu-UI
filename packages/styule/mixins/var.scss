@@ -25,6 +25,8 @@ $color-text-placeholder: #c0c4cc !default;
 
 $background-color-default: #F5F7FA !default;
 
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
+
 // font
 $font-size-default: 14px !default;
 $font-weight-default: 500 !default;
@@ -40,6 +42,8 @@ $border-color-lighter: #ebeef5 !default;
 $border-color-hover: $color-text-placeholder !default;
 $border-radius-circle: 100% !default;
 $border-color-extra-light: #F2F6FC !default;
+
+$index-top: 1000 !default;
 
 /* disabled */
 $disabled-default-background-color: $background-color-default !default;
@@ -155,3 +159,17 @@ $radio-button-disabled-checked-fill: $border-color-extra-light !default;
 
 // loading
 $loading-spinner-size: 42px !default;
+
+
+// select
+$select-font-size: $font-size-default !default;
+$select-option-color: $color-text-regular !default;
+$select-option-height: 34px !default;
+$select-option-disabled-color: $color-text-placeholder !default;
+$select-option-hover-background: $background-color-default !default;
+
+$select-dropdown-border: solid 1px $border-color-light !default;
+$select-dropdown-max-height: 274px !default;
+$select-dropdown-background: $color-white !default;
+$select-dropdown-shadow: $box-shadow-light !default;
+$select-dropdown-padding: 6px 0 !default;

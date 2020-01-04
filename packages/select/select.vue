@@ -1,7 +1,15 @@
 <template>
-  <div>
+  <div class="liu-select">
     <liu-input></liu-input>
-    <slot></slot>
+    <div class="liu-select-dropdown">
+      <liu-scrollbar
+        native tag="ul"
+        wrap-class="liu-select-dropdown__wrap"
+        view-class="liu-select-dropdown__list"
+      >
+        <slot></slot>
+      </liu-scrollbar>
+    </div>
   </div>
 </template>
 
@@ -10,7 +18,7 @@ import { Component, Prop, Mixins } from 'vue-property-decorator'
 
 // component
 import LiuInput from '../input'
-import LiuOption from './option.vue'
+import LiuScrollbar from '../scrollbar'
 
 // mixin
 import Emitter from '../../src/mixins/emitter'
@@ -19,7 +27,7 @@ export default {
   name: 'LiuSelect',
   components: {
     LiuInput,
-    LiuOption
+    LiuScrollbar
   }
 }
 </script>
