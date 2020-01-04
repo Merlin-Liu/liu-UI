@@ -15,6 +15,7 @@ import LiuRadioButton from '../packages/radio-button'
 import LiuScrollBar from '../packages/scrollbar'
 import LiuSelect from '../packages/select'
 import LiuOption from '../packages/option'
+import LiuLoding from '../packages/loading'
 
 import '../packages/styule/index.scss'
 
@@ -36,6 +37,7 @@ Vue.use(LiuRadioButton)
 Vue.use(LiuScrollBar)
 Vue.use(LiuSelect)
 Vue.use(LiuOption)
+Vue.use(LiuLoding)
 
 Vue.component('demo-block', Demo)
 
