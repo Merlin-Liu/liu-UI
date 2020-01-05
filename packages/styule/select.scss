@@ -2,6 +2,17 @@
 @import "mixins/var";
 @import "mixins/mixins";
 
+@include b(select) {
+  .liu-input {
+    & .fa-angle-down {
+      transition: transform .3s;
+      @include when(reverse) {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+}
+
 @include b(select-dropdown) {
   position: absolute;
   z-index: #{$index-top + 1};

@@ -3,12 +3,20 @@
     class="liu-select"
     @click="toggleMenu"
   >
+    <!-- 输入框 -->
     <liu-input
       ref="input"
       v-model="selectedLabel"
       :readonly="true"
       :placeholder="placeholder"
-    ></liu-input>
+      :disabled="disabled"
+    >
+      <template slot="suffix">
+        <i class="fa fa-angle-down" :class="{'is-reverse' : visible}"></i>
+      </template>
+    </liu-input>
+
+    <!-- 下拉框 -->
     <liu-select-dropdown v-show="visible">
       <liu-scrollbar
         native tag="ul"
@@ -94,7 +102,7 @@ export default {
   methods: {
     toggleMenu() {
       if (!this.disabled) {
-        this.visible = !this.visible;
+        this.visible = !this.visible
         this.$refs['input'].focus()
       }
     },
@@ -135,6 +143,8 @@ export default {
 
     handleOptionClick(option) {
       this.$emit('input', option.value)
+      this.visible = false
+      this.$refs['input'].focus()
     },
 
     resetInputWidth() {
