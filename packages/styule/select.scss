@@ -7,15 +7,14 @@
   z-index: #{$index-top + 1};
   border: $select-dropdown-border;
   border-radius: $border-default-radius;
-  // min-width: 240px;
+  min-width: 240px;
   background-color: $select-dropdown-background;
   box-shadow: $select-dropdown-shadow;
   box-sizing: border-box;
   margin: 5px 0;
 
-  @include e(list) {
-
-  }
+  // @include e(list) {
+  // }
 
   @include e(item) {
     font-size: $select-font-size;

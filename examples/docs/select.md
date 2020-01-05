@@ -1,3 +1,9 @@
+<style>
+  .demo-block .liu-select{
+    width: 240px;
+  }
+</style>
+
 <script>
   export default {
     data () {
@@ -32,7 +38,8 @@
         }, {
           value: '选项51',
           label: '北京烤鸭1'
-        }]
+        }],
+        selected: ''
       }
     }
   }
@@ -45,7 +52,8 @@
 :::demo
 ```html
 <template>
-  <liu-select>
+  <p>当前选择的value: {{selected}}</p>
+  <liu-select v-model="selected">
     <liu-option
       v-for="({label, value}, key) in options"
       :label="label"
@@ -74,7 +82,8 @@
         }, {
           value: '选项5',
           label: '北京烤鸭'
-        }]
+        }],
+        selected: ''
       }
     }
   }

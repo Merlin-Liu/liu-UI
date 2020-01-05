@@ -15,3 +15,21 @@ export function toObject(arr: any[]): Object {
 
   return result
 }
+
+export function getValueByPath(object: object, prop: string = ''): any {
+  const paths: Array<string> = prop.split('.')
+  let current: object = object
+  let result: any = null
+  for (let i = 0, j = paths.length; i < j; i++) {
+    const path: string = paths[i];
+    if (!current) break;
+
+    if (i === j - 1) {
+      result = current[path];
+      break;
+    }
+    current = current[path];
+  }
+
+  return result;
+}

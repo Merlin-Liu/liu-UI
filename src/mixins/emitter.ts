@@ -17,8 +17,8 @@ export default class Emitter extends Vue {
 
     if (parent) {
       // 组件可以响应自己出发的事件
-      parent.$emit(eventName, params)
-      // parent.$emit.apply(parent, [eventName].concat(params))
+      // parent.$emit(eventName, params)
+      parent.$emit.apply(parent, [eventName].concat(params))
     }
   }
 }

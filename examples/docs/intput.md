@@ -1,5 +1,5 @@
 <style>
-.demo-block .liu-input {
+.demo-block > div > .liu-input {
   width: 180px;
   margin-right: 15px;
 }

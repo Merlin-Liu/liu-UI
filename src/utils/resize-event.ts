@@ -9,11 +9,10 @@ const resizeHandler:ResizeObserverCallback = function(entries: ResizeObserverEnt
       listeners.map(fn => fn())
     }
   }
-
 }
 
 export const addResizeListener = function(element: ObserverElement, fn: Function): void {
-  if (element.__resizeListeners) {
+  if (!element.__resizeListeners) {
     element.__resizeListeners = []
     element.__resizeObsever = new ResizeObserver(resizeHandler)
     element.__resizeObsever.observe(element)
