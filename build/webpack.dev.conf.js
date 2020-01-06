@@ -163,6 +163,7 @@ module.exports = () => ({
   ],
   resolve: {
     alias: {
+      '@': resolve(__dirname, '../'),
       vue: 'vue/dist/vue.js'
     },
     extensions: ['.js', '.ts', 'tsx', '.vue', '.json', '.css']

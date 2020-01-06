@@ -2,6 +2,7 @@
   <div
     class="liu-select"
     @click="toggleMenu"
+    v-clickout="clickoutHandle"
   >
     <!-- 输入框 -->
     <liu-input
@@ -30,6 +31,9 @@
 </template>
 
 <script type="text/babel">
+// directive
+import clickout from '@/src/utils/click-out'
+
 // component
 import LiuInput from '../input'
 import LiuSelectDropdown from './select-dropdown'
@@ -44,6 +48,10 @@ import {addResizeListener, removeResizeListener} from '../../src/utils/resize-ev
 
 export default {
   name: 'LiuSelect',
+
+  directives: {
+    clickout
+  },
 
   provide() {
     return {
@@ -100,6 +108,10 @@ export default {
   },
 
   methods: {
+    clickoutHandle() {
+      console.log(3333)
+    },
+
     toggleMenu() {
       if (!this.disabled) {
         this.visible = !this.visible
