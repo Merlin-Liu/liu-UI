@@ -1,3 +1,7 @@
+/* Transition
+-------------------------- */
+$md-fade-transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1), opacity 500ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+
 // color
 $color-white: #fff !default;
 $color-black: #000 !default;

@@ -18,15 +18,17 @@
     </liu-input>
 
     <!-- 下拉框 -->
-    <liu-select-dropdown v-show="visible">
-      <liu-scrollbar
-        native tag="ul"
-        wrap-class="liu-select-dropdown__wrap"
-        view-class="liu-select-dropdown__list"
-      >
-        <slot></slot>
-      </liu-scrollbar>
-    </liu-select-dropdown>
+    <transition name="liu-zoom-in-top">
+      <liu-select-dropdown v-show="visible">
+        <liu-scrollbar
+          native tag="ul"
+          wrap-class="liu-select-dropdown__wrap"
+          view-class="liu-select-dropdown__list"
+        >
+          <slot></slot>
+        </liu-scrollbar>
+      </liu-select-dropdown>
+    </transition>
   </div>
 </template>
 
