@@ -22,7 +22,21 @@ if (!Vue.prototype.$isServer) {
 
 function createDocumentHandler(element, binding, vnode) {
   return (mouseupEvent = {}, mousedownEvent = {}) => {
-    element[LISTENTIP].bindingFn()
+    if (!vnode ||
+      !vnode.context ||
+      !mouseupEvent.target ||
+      !mousedownEvent.target ||
+      element.contains(mouseupEvent.target) ||
+      element.contains(mousedownEvent.target) ||
+      element === mouseupEvent.target
+    ) {
+      // parentNode.contains(childNode)
+      // 来表示传入的节点是否为该节点的后代节点
+      return
+    }
+
+    const bindingFn = element[LISTENTIP].bindingFn
+    bindingFn && bindingFn()
   }
 }
 
@@ -44,7 +58,7 @@ export default {
   update(element, binding, vnode) {
     element[LISTENTIP].documentHandler = createDocumentHandler(element, binding, vnode)
     element[LISTENTIP].methodName = binding.expression
-    element[LISTENTIP].bindingFn = binding.bindingFn
+    element[LISTENTIP].bindingFn = binding.value
   },
 
   unbind(element) {

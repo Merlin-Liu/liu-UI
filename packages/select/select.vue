@@ -108,15 +108,16 @@ export default {
   },
 
   methods: {
-    clickoutHandle() {
-      console.log(3333)
-    },
-
     toggleMenu() {
       if (!this.disabled) {
         this.visible = !this.visible
         this.$refs['input'].focus()
       }
+    },
+
+    // 点击到了元素外面，关闭dropdown
+    clickoutHandle() {
+      this.visible = false
     },
 
     getOption(value) {

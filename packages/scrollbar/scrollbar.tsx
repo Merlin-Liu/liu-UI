@@ -12,7 +12,7 @@ import Bar from './bar.tsx'
   }
 })
 export default class LiuScrollBar extends Vue {
-  @Prop(Boolean) readonly native: boolean
+  @Prop({ type: Boolean, default: true}) readonly native: boolean
   @Prop(Boolean) readonly noresize: boolean // 如果 container 尺寸不会发生变化，最好设置它可以优化性能
   @Prop({ type: Object }) readonly wrapStyle?: object
   @Prop(String) readonly wrapClass: string
