@@ -19,6 +19,7 @@ export default Vue.extend({})
   box-sizing: border-box;
   padding: 20px;
   border: 1px solid #ebedf0;
+  background-color: rgb(204,232,207);
   .description {
     padding: 20px;
     box-sizing: border-box;

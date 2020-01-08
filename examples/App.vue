@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <ul class="left-slider">
+  <div>
+    <ul>
       <li v-for="(item, index) in componentRouters" :key="index">
         <router-link
           tag="a"
@@ -23,14 +23,30 @@ export default {
 </script>
 
 <style lang="scss">
-  .container {
-    width: 960px;
-    margin: 0 auto;
-    .left-slider {
-      position: fixed;
-      left: 0;
-      top: 0;
-      bottom: 0;
+body > div:first-child {
+  width: 1000px;
+  margin: 0 auto;
+  & > ul {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: 6px;
+    padding: 0;
+    li {
+      display: block;
+      width: 80px;
+      margin: 2px;
+      padding: 5px;
+      border: 1px dashed snow;
+      list-style: none;
+      text-align: center;
+      background-color: rgb(204,232,207);
     }
   }
+  .main {
+    background-color: rgb(204,232,207);
+    padding: 10px 20px;
+  }
+}
 </style>

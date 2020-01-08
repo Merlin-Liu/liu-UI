@@ -13,7 +13,7 @@ exports.mid = function(source, md) {
   const retStr = `${style}
 
 <template>
-  <div>
+  <div class="main">
     ${md.render(templateStr)}
   </div>
 </template>

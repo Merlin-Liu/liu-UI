@@ -40,11 +40,11 @@ export default {
 }
 </script>
 
-# Input 输入框
+## Input 输入框
 
 通过鼠标或键盘输入字符
 
-## 基础用法
+### 基础用法
 
 :::demo
 
@@ -67,7 +67,7 @@ export default {
 
 :::
 
-## 禁用状态
+### 禁用状态
 
 :::demo
 
@@ -89,7 +89,7 @@ export default {
 
 :::
 
-## 密码框
+### 密码框
 
 :::demo
 ```html
@@ -109,7 +109,7 @@ export default {
 ```
 :::
 
-## 可清空
+### 可清空
 
 :::demo
 
@@ -132,7 +132,7 @@ export default {
 
 :::
 
-## 带icon的输入框
+### 带icon的输入框
 
 :::demo 可以通过 slot `prefix`、`suffix` 来放置图标。
 
@@ -159,7 +159,7 @@ export default {
 
 :::
 
-## 复合型输入框
+### 复合型输入框
 
 可前置元素或后置元素
 
@@ -196,7 +196,7 @@ export default {
 
 :::
 
-##  尺寸
+###  尺寸
 
 :::demo 提供`size`属性控制输入框尺寸，除了默认的尺寸外，还提供`medium`、`small`、`nimi`三种尺寸。
 
@@ -232,7 +232,7 @@ export default {
 
 :::
 
-## 文本域
+### 文本域
 
 用于输入多行文本信息，通过将`type`属性的值指定为`textarea`。
 
@@ -257,7 +257,7 @@ export default {
 
 :::
 
-## 自动调整文本域
+### 自动调整文本域
 
 可通过`autosize`设置文本域跟随自适应文本内容，`autosize`还可以设置为一个对象，指定最大行和最小行。
 
@@ -284,7 +284,7 @@ export default {
 
 :::
 
-## 输入长度限制
+### 输入长度限制
 
 可通过`autosize`设置文本域跟随自适应文本内容，`autosize`还可以设置为一个对象，指定最大行和最小行。
 

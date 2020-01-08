@@ -11,11 +11,11 @@ export default {
 }
 </script>
 
-# Loading 加载
+## Loading 加载
 
 加载数据时显示动效
 
-## 基础用法
+### 基础用法
 
 :::demo
 

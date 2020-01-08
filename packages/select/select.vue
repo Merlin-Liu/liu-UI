@@ -15,8 +15,16 @@
       @mouseleave.native="inputHovering = false"
     >
       <template slot="suffix">
-        <i v-if="showCloseIcon" class="fa fa-times-circle" @click.stop="clearSelected"></i>
-        <i v-else class="fa fa-angle-down" :class="{'is-reverse' : visible}"></i>
+        <i
+          v-if="showCloseIcon"
+          class="fa fa-times-circle"
+          @click.stop="clearSelected"
+        />
+        <i
+          v-else
+          class="fa fa-angle-down"
+          :class="{'is-reverse' : visible}"
+        />
       </template>
     </liu-input>
 
@@ -24,12 +32,17 @@
     <transition name="liu-zoom-in-top">
       <liu-select-dropdown v-show="visible">
         <liu-scrollbar
-          native tag="ul"
+          v-show="options.length > 0"
+          native-tag="ul"
           wrap-class="liu-select-dropdown__wrap"
           view-class="liu-select-dropdown__list"
         >
           <slot></slot>
         </liu-scrollbar>
+        <p
+          v-if="options.length === 0"
+          class="liu-select-dropdown__empty"
+        >无数据</p>
       </liu-select-dropdown>
     </transition>
   </div>
