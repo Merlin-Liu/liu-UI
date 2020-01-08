@@ -1,6 +1,7 @@
 <template>
   <div>
     <ul>
+      <li class="title">Liu-UI</li>
       <li v-for="(item, index) in componentRouters" :key="index">
         <router-link
           tag="a"
@@ -35,13 +36,19 @@ body > div:first-child {
     padding: 0;
     li {
       display: block;
-      width: 80px;
-      margin: 2px;
+      width: 100px;
+      margin: 4px 2px;
       padding: 5px;
       border: 1px dashed snow;
       list-style: none;
       text-align: center;
+      font-size: 20px;
+      font-weight: 900;
       background-color: rgb(204,232,207);
+
+      &.title {
+        color: red;
+      }
     }
   }
   .main {
