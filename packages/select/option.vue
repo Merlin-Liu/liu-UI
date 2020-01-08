@@ -29,7 +29,7 @@ export default class LiuOption extends Mixins(Emitter) {
     return (Object.prototype as any).toString.call(this.value).toLowerCase() === '[object object]'
   }
 
-  private get currentLabel(): any {
+  public get currentLabel(): any {
     return this.label || (this.isObject ? '' : this.value)
   }
 

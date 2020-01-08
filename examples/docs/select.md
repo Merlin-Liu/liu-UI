@@ -44,7 +44,25 @@
           label: '北京烤鸭',
           disabled: true
         }],
-        selected2: ''
+        selected2: '',
+
+        options3: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        selected3: '',
       }
     }
   }
@@ -192,3 +210,52 @@
 </script>
 ```
 :::
+
+## 可清空单选
+
+包含清空按钮，可将选择器清空为初始状态
+
+:::demo 为`liu-select`设置`clearable`属性，则可将选择器清空。
+
+```html
+<template>
+  <liu-select v-model="selected3" clearable>
+    <liu-option
+      v-for="({label, value}, key) in options3"
+      :label="label"
+      :value="value"
+      :key="key"
+    ></liu-option>
+  </liu-select>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        options3: [{
+          value: '选项1',
+          label: '黄金糕',
+          disabled: true
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭',
+          disabled: true
+        }],
+        selected3: ''
+      }
+    }
+  }
+</script>
+```
+:::
+

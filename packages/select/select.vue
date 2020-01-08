@@ -11,9 +11,12 @@
       :readonly="true"
       :placeholder="placeholder"
       :disabled="disabled"
+      @mouseenter.native="inputHovering = true"
+      @mouseleave.native="inputHovering = false"
     >
       <template slot="suffix">
-        <i class="fa fa-angle-down" :class="{'is-reverse' : visible}"></i>
+        <i v-if="showCloseIcon" class="fa fa-times-circle" @click.stop="clearSelected"></i>
+        <i v-else class="fa fa-angle-down" :class="{'is-reverse' : visible}"></i>
       </template>
     </liu-input>
 
@@ -45,7 +48,7 @@ import LiuScrollbar from '../scrollbar'
 import Emitter from '../../src/mixins/emitter'
 
 // uitl
-import {getValueByPath} from '../../src/utils/utils'
+import {getValueByPath, valueEquals} from '../../src/utils/utils'
 import {addResizeListener, removeResizeListener} from '../../src/utils/resize-event'
 
 export default {
@@ -68,7 +71,8 @@ export default {
     placeholder: {
       default: '请选择'
     },
-    disabled: Boolean
+    disabled: Boolean,
+    clearable: Boolean
   },
 
   data() {
@@ -78,7 +82,16 @@ export default {
       selected: {},
       selectedLabel: '',
       visible: false,
-      inputWidth: 0 // liu-input的实际宽度
+      inputWidth: 0, // liu-input的实际宽度
+      inputHovering: false // 鼠标滑动进liu-input中的标记
+    }
+  },
+
+  computed: {
+    showCloseIcon() {
+      const hasValue = this.value !== undefined && this.value !== null && this.value !== ''
+
+      return this.clearable && this.inputHovering && hasValue && !this.disabled
     }
   },
 
@@ -100,7 +113,8 @@ export default {
 
   mounted() {
     // 监听select最外层容器宽度变化
-    addResizeListener(this.$el, this.handleResize);
+    addResizeListener(this.$el, this.handleResize)
+    this.setSelected()
   },
 
   beforeDestroy() {
@@ -114,6 +128,12 @@ export default {
       if (!this.disabled) {
         this.visible = !this.visible
         this.$refs['input'].focus()
+      }
+    },
+
+    emitChange(val) {
+      if (!valueEquals(this.value, val)) {
+        this.$emit('change', val)
       }
     },
 
@@ -131,7 +151,7 @@ export default {
       for(let i = this.cachedOptions.length - 1; i >= 0; i--) {
         const cachedOption = this.cachedOptions[i]
         const isEqual = isObject
-          ? getValueByPath(cachedOption.value, this.valueKey) === getValueByPath(value, this.valueKey)
+          ? getValueByPath(cachedOption.value, 'value') === getValueByPath(value, 'value')
           : cachedOption.value === value
         if (isEqual) {
           option = cachedOption
@@ -142,7 +162,7 @@ export default {
         return option
       }
 
-      const lebal = (!isObject && !isNull && !isUndefined) ? value : ''
+      const label = (!isObject && !isNull && !isUndefined) ? value : ''
 
       return {
         value,
@@ -156,9 +176,18 @@ export default {
       this.selected = option;
     },
 
+    clearSelected() {
+      const value = ''
+      this.visible = false
+      this.$emit('input', value)
+      this.emitChange(value)
+      this.$emit('clear')
+    },
+
     handleOptionClick(option) {
       this.$emit('input', option.value)
       this.visible = false
+      this.emitChange(option.value)
       this.$refs['input'].focus()
     },
 

@@ -33,3 +33,22 @@ export function getValueByPath(object: object, prop: string = ''): any {
 
   return result;
 }
+
+type equalType = number | string | Array<string | number>
+export function valueEquals(a: equalType, b: equalType): boolean {
+  if (a === b) {
+    return true
+  }
+
+  if (!(a instanceof Array) || !(b instanceof Array) || (a.length !== b.length)) {
+    return false
+  }
+
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false
+    }
+  }
+
+  return true
+}
