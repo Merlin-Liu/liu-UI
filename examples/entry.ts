@@ -19,6 +19,7 @@ import LiuSelect from '../packages/select'
 import LiuOption from '../packages/option'
 import LiuLoding from '../packages/loading'
 import LiuNotification from '../packages/notification'
+import LiuAlert from '../packages/alert'
 
 // 组件样式
 import '../packages/styule/index.scss'
@@ -40,6 +41,7 @@ Vue.use(LiuScrollBar)
 Vue.use(LiuSelect)
 Vue.use(LiuOption)
 Vue.use(LiuLoding)
+Vue.use(LiuAlert)
 Vue.prototype.$notify = LiuNotification
 
 // demo组件

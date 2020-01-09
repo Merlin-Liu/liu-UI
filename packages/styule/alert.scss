@@ -1,0 +1,43 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+
+@include b(alert) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: $alert-padding;
+  border-radius: $alert-border-radius;
+  background-color: $color-white;
+
+  @include e(content) {
+    display: table-cell;
+    padding: 0 8px;
+  }
+
+  @include e(close) {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;
+  }
+
+  @include m(success) {
+    background-color: $color-success;
+  }
+
+  @include m(info) {
+    background-color: $color-info;
+  }
+
+  @include m(warning) {
+    background-color: $color-warning;
+  }
+
+  @include m(error) {
+    background-color: $color-danger;
+  }
+}
