@@ -15,7 +15,7 @@
 :::demo Alert 组件提供四种主题，由`type`属性指定，默认值为`info`。
 ```html
 <template>
-  <liu-alert title="成功提示的文案" type="success">3333</liu-alert>
+  <liu-alert title="成功提示的文案" type="success"></liu-alert>
   <liu-alert title="消息提示的文案" type="info"></liu-alert>
   <liu-alert title="警告提示的文案" type="warning"></liu-alert>
   <liu-alert title="错误提示的文案" type="error"></liu-alert>
