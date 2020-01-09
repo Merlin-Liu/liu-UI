@@ -81,7 +81,7 @@
 ```html
 <template>
   <p>当前选择的value: {{selected}}</p>
-  <liu-select v-model="selected">
+  <liu-select v-model="selected" size="small">
     <liu-option
       v-for="({label, value}, key) in options"
       :label="label"
@@ -270,7 +270,6 @@
 | clearable | 是否可以清空选项 | boolean | — | false |
 | name | select input 的 name 属性 | string | — | — |
 | placeholder | 占位符 | string | — | 请选择 |
-| no-data-text | 选项为空时显示的文字，也可以使用`slot="empty"`设置 | string | — | 无数据 |
 
 ### Select Events
 | 事件名称 | 说明 | 回调参数 |
@@ -287,12 +286,6 @@
 |    —    | Option 组件列表 |
 | prefix  | Select 组件头部内容 |
 | empty | 无选项时的列表 |
-
-### Option Group Attributes
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| label | 分组的组名 | string | — | — |
-| disabled | 是否将该分组下所有选项置为禁用 | boolean | — | false |
 
 ### Option Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |

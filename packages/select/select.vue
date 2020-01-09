@@ -1,6 +1,7 @@
 <template>
   <div
     class="liu-select"
+    :class="[size ? 'liu-select--' + size : '']"
     @click="toggleMenu"
     v-clickout="clickoutHandle"
   >
@@ -9,6 +10,8 @@
       ref="input"
       v-model="selectedLabel"
       :readonly="true"
+      :name="name"
+      :size="size"
       :placeholder="placeholder"
       :disabled="disabled"
       @mouseenter.native="inputHovering = true"
@@ -85,7 +88,9 @@ export default {
       default: '请选择'
     },
     disabled: Boolean,
-    clearable: Boolean
+    clearable: Boolean,
+    size: String,
+    name: String
   },
 
   data() {
