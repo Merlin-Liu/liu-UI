@@ -36,7 +36,7 @@ body > div:first-child {
     padding: 0;
     li {
       display: block;
-      width: 100px;
+      width: 110px;
       margin: 4px 2px;
       padding: 5px;
       border: 1px dashed snow;
@@ -55,5 +55,12 @@ body > div:first-child {
     background-color: rgb(204,232,207);
     padding: 10px 20px;
   }
+}
+.language-javascript {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+    background: #f8f8f8;
 }
 </style>

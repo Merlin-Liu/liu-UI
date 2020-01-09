@@ -1,0 +1,71 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+
+@include b(notification) {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: $notification-width;
+  padding: $notification-padding;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid $notification-border-color;
+  border-radius: $notification-radius;
+  background-color: $color-white;
+
+  @include e(group) {
+    margin-left: $notification-group-margin-left;
+    margin-right: $notification-group-margin-right;
+  }
+
+  @include e(title) {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: $notification-title-font-size;
+    color: $notification-title-color;
+    font-weight: bold;
+  }
+
+  @include e(icon) {
+    height: $notification-icon-size;
+    width: $notification-icon-size;
+    font-size: $notification-icon-size;
+    margin-right: 5px;
+
+    &.success {
+      color: $color-success;
+    }
+    &.info {
+      color: $color-info;
+    }
+    &.warning {
+      color: $color-warning;
+    }
+    &.error {
+      color: $color-danger;
+    }
+  }
+
+  @include e(content) {
+    margin: 6px 0 0 0;
+    line-height: 21px;
+    font-size: $notification-content-font-size;
+    color: $notification-content-color;
+    text-align: justify;
+  }
+
+  @include e(close) {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    cursor: pointer;
+    font-size: $notification-close-font-size;
+    color: $notification-close-color;
+
+    &:hover {
+      color: $notification-close-hover-color;
+    }
+  }
+}

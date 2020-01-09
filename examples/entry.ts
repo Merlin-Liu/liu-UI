@@ -3,10 +3,12 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github.css'
 import 'font-awesome/css/font-awesome.css'
 
+// demo依赖
 import router from './router.conf'
 import entry from './App.vue'
 import Demo from './components/demo.vue'
 
+// 组件
 import LiuButton from '../packages/button'
 import LiuInput from '../packages/input'
 import LiuRadio from '../packages/radio'
@@ -16,11 +18,10 @@ import LiuScrollBar from '../packages/scrollbar'
 import LiuSelect from '../packages/select'
 import LiuOption from '../packages/option'
 import LiuLoding from '../packages/loading'
+import LiuNotification from '../packages/notification'
 
+// 组件样式
 import '../packages/styule/index.scss'
-
-// test
-// import test from '../test'
 
 Vue.directive('highlight', el => {
   const blocks = el.querySelectorAll('pre code')
@@ -29,6 +30,7 @@ Vue.directive('highlight', el => {
   })
 })
 
+// use组件
 Vue.use(LiuButton)
 Vue.use(LiuInput)
 Vue.use(LiuRadio)
@@ -38,12 +40,12 @@ Vue.use(LiuScrollBar)
 Vue.use(LiuSelect)
 Vue.use(LiuOption)
 Vue.use(LiuLoding)
+Vue.prototype.$notify = LiuNotification
 
+// demo组件
 Vue.component('demo-block', Demo)
 
 new Vue({
   router,
   render: h => h(entry)
-  // test
-  // render: h => h(test)
 }).$mount('#app')
