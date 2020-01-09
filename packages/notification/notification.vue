@@ -1,18 +1,26 @@
 <template>
-  <div class="liu-notification">
-    <div class="liu-notification__group">
-      <h2 class="liu-notification__title"><i
-        class="liu-notification__icon fa"
-        :class="[type, typeIconName]"
-      />{{title}}</h2>
-      <div class="liu-notification__content">{{message}}</div>
-      <div
-        class="liu-notification__close fa fa-times-circle"
-        v-if="showClose"
-        @click.stop="close"
-      />
+  <transition name="liu-notification-fade">
+    <div
+      class="liu-notification"
+      :class="[horizontalClass]"
+      :style="positionStyle"
+      v-show="visible"
+    >
+      <div class="liu-notification__group">
+        <h2 class="liu-notification__title"><i
+          class="liu-notification__icon fa"
+          :class="[type, typeIconName]"
+          v-if="type"
+        />{{title}}</h2>
+        <div class="liu-notification__content">{{message}}</div>
+        <div
+          class="liu-notification__close fa fa-times-circle"
+          v-if="showClose"
+          @click.stop="close"
+        />
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script type="text/babel">
@@ -38,16 +46,35 @@ export default {
       customClass: '',
       verticalOffset: 0,
       position: 'top-right',
-      // dangerouslyUseHTMLString: false,
+      dangerouslyUseHTMLString: false,
       timer: null,
       closed: false
     }
   },
 
   computed: {
+    horizontalClass() {
+      return this.position.indexOf('right') > -1 ? 'right' : 'left';
+    },
+
     typeIconName() {
       const type = this.type
       return type && TYPE_NAME_MAP[type] ? TYPE_NAME_MAP[type] : ''
+    },
+
+    positionStyle() {
+      return {
+        top: `${this.verticalOffset}px`
+      }
+    }
+  },
+
+  watch: {
+    closed(newVal) {
+      if (newVal) {
+        this.visible = false
+        this.$el.addEventListener('transitionend', this.destroyElement)
+      }
     }
   },
 
@@ -62,17 +89,16 @@ export default {
   },
 
   methods: {
-    destroySelf() {
-      const parentNode = this.$el.parentNode
-      parentNode && parentNode.removeChild(this.$el)
+    destroyElement() {
+      this.$el.removeEventListener('transitionend', this.destroyElement)
       this.$destroy()
+      this.$el.parentNode.removeChild(this.$el)
     },
 
     close() {
       this.closed = true
-      this.destroySelf()
       if (typeof this.onClose === 'function') {
-        this.onClose();
+        this.onClose()
       }
     }
   }

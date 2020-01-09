@@ -4,8 +4,6 @@
 
 @include b(notification) {
   position: fixed;
-  top: 16px;
-  right: 16px;
   width: $notification-width;
   padding: $notification-padding;
   box-sizing: border-box;
@@ -13,6 +11,15 @@
   border: 1px solid $notification-border-color;
   border-radius: $notification-radius;
   background-color: $color-white;
+  transition: opacity .3s, transform .3s, left .3s, right .3s, top 0.4s, bottom .3s;
+
+  &.right {
+    right: 16px;
+  }
+
+  &.left {
+    left: 16px;
+  }
 
   @include e(group) {
     margin-left: $notification-group-margin-left;
@@ -69,3 +76,20 @@
     }
   }
 }
+
+.liu-notification-fade-enter {
+  &.right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.liu-notification-fade-leave-active {
+  opacity: 0;
+}
+
