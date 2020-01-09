@@ -45,6 +45,14 @@ export default {
         message: '这是一条显示关闭按钮的消息',
         showClose: true
       })
+    },
+
+    open10() {
+      this.$notify({
+        title: '偏移',
+        message: '这是一条带有偏移的提示消息',
+        offset: 100
+      })
     }
   }
 }
@@ -159,6 +167,32 @@ export default {
           title: 'Info',
           message: '这是一条显示关闭按钮的消息',
           showClose: true
+        })
+      }
+    }
+  }
+</script>
+```
+:::
+
+### 带有偏移
+
+让 Notification 偏移一些位置
+
+:::demo `Notification`提供设置偏移量的功能，通过设置 `offset` 字段，可以使弹出的消息距屏幕边缘偏移一段距离。注意在同一时刻，所有的`Notification`实例应当具有一个相同的偏移量。
+```html
+<template>
+  <liu-button plain @click="open10">偏移的消息</liu-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      open10() {
+        this.$notify({
+          title: '偏移',
+          message: '这是一条带有偏移的提示消息',
+          offset: 100
         })
       }
     }
