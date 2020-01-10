@@ -13,6 +13,10 @@
   border-radius: $alert-border-radius;
   background-color: $color-white;
 
+  @include when(center) {
+    justify-content: center;
+  }
+
   @include e(content) {
     display: table-cell;
     padding: 0 8px;

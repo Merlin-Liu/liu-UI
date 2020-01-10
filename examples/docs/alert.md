@@ -89,3 +89,18 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 </template>
 ```
 :::
+
+### 文字居中
+
+使用 `center` 属性让文字水平居中。
+
+:::demo
+```html
+<template>
+  <liu-alert title="成功提示的文案" type="success" center show-icon></liu-alert>
+  <liu-alert title="消息提示的文案" type="info" center show-icon></liu-alert>
+  <liu-alert title="警告提示的文案" type="warning" center show-icon></liu-alert>
+  <liu-alert title="错误提示的文案" type="error" center show-icon></liu-alert>
+</template>
+```
+:::
