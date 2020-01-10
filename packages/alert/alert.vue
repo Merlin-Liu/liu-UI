@@ -4,23 +4,32 @@
     :class="[typeClass, center ? 'is-center' : '', 'is-' + effect]"
     v-show="visible"
   >
-    <i class="liu-alert__icon"></i>
+    <i
+      class="liu-alert__icon fa"
+      :class="iconClass"
+      v-if="showIcon"
+    ></i>
     <div class="liu-alert__content">
       <span class="liu-alert__title">
         <slot name="title">{{title}}</slot>
       </span>
       <p class="liu-alert__description" v-if="description || $slots.default"><slot>{{description}}</slot></p>
-      <i class="liu-alert__close fa fa-times-circle"></i>
+      <i
+        class="liu-alert__close fa"
+        :class="{'fa-times-circle' : closeText === ''}"
+        v-show="closeable"
+        @click="close"
+      >{{closeText}}</i>
     </div>
   </div>
 </template>
 
 <script type="text/babel">
 const TYPE_CLASS_MAP = {
-  success: '',
-  info: '',
-  warning: '',
-  error: ''
+  success: 'fa-check-circle',
+  info: 'fa-info-circle',
+  warning: 'fa-exclamation-circle',
+  error: 'fa-window-close'
 }
 
 const TYPE_MAP = Object.keys(TYPE_CLASS_MAP)
@@ -39,7 +48,10 @@ export default {
     },
     type: {
       type: String,
-      default: 'info'
+      default: 'info',
+      validator: str => {
+        return TYPE_MAP.indexOf(str) !== -1
+      }
     },
     closeable: {
       type: Boolean,
@@ -69,6 +81,17 @@ export default {
   computed: {
     typeClass() {
       return TYPE_MAP.includes(this.type) ? `liu-alert--${this.type}` : ''
+    },
+
+    iconClass() {
+      return TYPE_CLASS_MAP[this.type] || ''
+    }
+  },
+
+  methods: {
+    close() {
+      this.visible = false
+      this.$emit('close')
     }
   }
 }

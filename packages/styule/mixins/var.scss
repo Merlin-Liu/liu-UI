@@ -12,6 +12,11 @@ $color-warning: #e6a23c !default;
 $color-danger: #f56c6c !default;
 $color-info: #909399 !default;
 
+$color-success-lighter: mix($color-white, $color-success, 90%) !default;
+$color-warning-lighter: mix($color-white, $color-warning, 90%) !default;
+$color-danger-lighter: mix($color-white, $color-danger, 90%) !default;
+$color-info-lighter: mix($color-white, $color-info, 90%) !default;
+
 $color-primary-light-1: mix($color-white, $color-primary, 10%) !default; /* 53a8ff */
 $color-primary-light-2: mix($color-white, $color-primary, 20%) !default; /* 66b1ff */
 $color-primary-light-3: mix($color-white, $color-primary, 30%) !default; /* 79bbff */
@@ -202,3 +207,7 @@ $notification-close-font-size: 16px !default;
 // alert
 $alert-padding: 8px 16px !default;
 $alert-border-radius: $border-default-radius !default;
+$alert-success-color: $color-success-lighter !default;
+$alert-info-color: $color-info-lighter !default;
+$alert-warning-color: $color-warning-lighter !default;
+$alert-error-color: $color-danger-lighter !default;
