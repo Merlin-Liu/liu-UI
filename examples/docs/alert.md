@@ -104,3 +104,58 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 </template>
 ```
 :::
+
+### 带有辅助性文字介绍
+
+包含标题和内容，解释更详细的警告。
+
+:::demo 除了必填的`title`属性外，你可以设置`description`属性来帮助你更好地介绍，我们称之为辅助性文字。辅助性文字只能存放单行文本，会自动换行显示。
+```html
+<template>
+  <liu-alert
+    title="带辅助性文字介绍"
+    type="success"
+    description="这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。 黑灰化肥会挥发发灰黑化肥黑灰挥发化为灰……">
+  </liu-alert>
+  <liu-alert
+    title="带辅助性文字介绍"
+    type="error"
+    effect="dark"
+    description="这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。 黑灰化肥会挥发发灰黑化肥黑灰挥发化为灰……">
+  </liu-alert>
+</template>
+```
+:::
+
+### 带有`icon`和辅助性文字介绍
+
+:::demo 最后，这是一个同时具有 icon 和辅助性文字的样例。
+```html
+<template>
+  <liu-alert
+    title="成功提示的文案"
+    type="success"
+    description="文字说明文字说明文字说明文字说明文字说明文字说明"
+    show-icon>
+  </liu-alert>
+  <liu-alert
+    title="消息提示的文案"
+    type="info"
+    description="文字说明文字说明文字说明文字说明文字说明文字说明"
+    show-icon>
+  </liu-alert>
+  <liu-alert
+    title="警告提示的文案"
+    type="warning"
+    description="文字说明文字说明文字说明文字说明文字说明文字说明"
+    show-icon>
+  </liu-alert>
+  <liu-alert
+    title="错误提示的文案"
+    type="error"
+    description="文字说明文字说明文字说明文字说明文字说明文字说明"
+    show-icon>
+  </liu-alert>
+</template>
+```
+:::

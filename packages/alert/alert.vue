@@ -6,11 +6,15 @@
   >
     <i
       class="liu-alert__icon fa"
-      :class="iconClass"
+      :class="[iconClass, isBigIcon]"
       v-if="showIcon"
     ></i>
     <div class="liu-alert__content">
-      <span class="liu-alert__title">
+      <span
+        class="liu-alert__title"
+        :class="[isBoldTitle]"
+        v-if="title || $slots.title"
+      >
         <slot name="title">{{title}}</slot>
       </span>
       <p class="liu-alert__description" v-if="description || $slots.default"><slot>{{description}}</slot></p>
@@ -29,7 +33,7 @@ const TYPE_CLASS_MAP = {
   success: 'fa-check-circle',
   info: 'fa-info-circle',
   warning: 'fa-exclamation-circle',
-  error: 'fa-window-close'
+  error: 'fa-times-circle'
 }
 
 const TYPE_MAP = Object.keys(TYPE_CLASS_MAP)
@@ -85,6 +89,14 @@ export default {
 
     iconClass() {
       return TYPE_CLASS_MAP[this.type] || ''
+    },
+
+    isBigIcon() {
+      return this.description || this.$slots.default ? 'is-big' : ''
+    },
+
+    isBoldTitle() {
+      return this.description || this.$slots.default ? 'is-bold' : ''
     }
   },
 
