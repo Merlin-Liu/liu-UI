@@ -26,3 +26,7 @@
 * [输入框](./examples/docs/input.md)
 * [单选框](./examples/docs/radio.md)
 * [滚动条](./examples/docs/scrollbar.md)
+* [选择器](./examples/docs/select.md)
+* [加载](./examples/docs/loading.md)
+* [通知](./examples/docs/notification.md)
+* [警告](./examples/docs/alert.md)
