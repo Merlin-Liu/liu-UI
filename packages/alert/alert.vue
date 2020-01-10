@@ -1,31 +1,33 @@
 <template>
-  <div
-    class="liu-alert"
-    :class="[typeClass, center ? 'is-center' : '', 'is-' + effect]"
-    v-show="visible"
-  >
-    <i
-      class="liu-alert__icon fa"
-      :class="[iconClass, isBigIcon]"
-      v-if="showIcon"
-    ></i>
-    <div class="liu-alert__content">
-      <span
-        class="liu-alert__title"
-        :class="[isBoldTitle]"
-        v-if="title || $slots.title"
-      >
-        <slot name="title">{{title}}</slot>
-      </span>
-      <p class="liu-alert__description" v-if="description || $slots.default"><slot>{{description}}</slot></p>
+  <transition name="liu-alert-fade">
+    <div
+      class="liu-alert"
+      :class="[typeClass, center ? 'is-center' : '', 'is-' + effect]"
+      v-show="visible"
+    >
       <i
-        class="liu-alert__close fa"
-        :class="{'fa-times-circle' : closeText === ''}"
-        v-show="closeable"
-        @click="close"
-      >{{closeText}}</i>
+        class="liu-alert__icon fa"
+        :class="[iconClass, isBigIcon]"
+        v-if="showIcon"
+      ></i>
+      <div class="liu-alert__content">
+        <span
+          class="liu-alert__title"
+          :class="[isBoldTitle]"
+          v-if="title || $slots.title"
+        >
+          <slot name="title">{{title}}</slot>
+        </span>
+        <p class="liu-alert__description" v-if="description || $slots.default"><slot>{{description}}</slot></p>
+        <i
+          class="liu-alert__close fa"
+          :class="{'fa-times-circle' : closeText === ''}"
+          v-show="closeable"
+          @click="close"
+        >{{closeText}}</i>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script type="text/babel">
