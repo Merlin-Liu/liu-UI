@@ -24,10 +24,7 @@
     <span
       class="liu-radio-button__inner"
       :style="raidoValue === label ? activeStyle : null"
-    >
-      <slot/>
-      <template v-if="!$slots.default">{{label}}</template>
-    </span>
+    ><slot/><template v-if="!$slots.default">{{label}}</template></span>
   </label>
 </template>
 
