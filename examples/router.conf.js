@@ -11,7 +11,8 @@ export const COMPOENENT_NAME_MAP = {
   notification: '通知',
   radio: '单选框',
   scrollbar: '滚动条',
-  select: '选择器'
+  select: '选择器',
+  tag: '标签'
 }
 
 const context = require.context('./docs', false, /\.md$/)
