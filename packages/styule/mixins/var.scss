@@ -215,3 +215,30 @@ $alert-icon-size: 16px !default;
 $alert-icon-large-size: 28px !default;
 $alert-title-font-size: 13px !default;
 $alert-description-font-size: 12px !default;
+
+// tag
+$tag-height: 32px !default;
+$tag-line-height: 30px !default;
+$tag-padding: 0 10px !default;
+$tag-font-size: 12px !default;
+$tag-border-radius: 4px !default;
+// default
+$tag-default-background-color: mix($color-primary, $color-white, 10%);
+$tag-default-border-color: mix($color-primary, $color-white, 20%);
+$tag-default-color: mix($color-primary, $color-white, 100%);
+// info
+$tag-info-background-color: mix($color-info, $color-white, 10%);
+$tag-info-border-color: mix($color-info, $color-white, 20%);
+$tag-info-color: mix($color-info, $color-white, 100%);
+// success
+$tag-success-background-color: mix($color-success, $color-white, 10%);
+$tag-success-border-color: mix($color-success, $color-white, 20%);
+$tag-success-color: mix($color-success, $color-white, 100%);
+// warning
+$tag-warning-background-color: mix($color-warning, $color-white, 10%);
+$tag-warning-border-color: mix($color-warning, $color-white, 20%);
+$tag-warning-color: mix($color-warning, $color-white, 100%);
+// danger
+$tag-danger-background-color: mix($color-danger, $color-white, 10%);
+$tag-danger-border-color: mix($color-danger, $color-white, 20%);
+$tag-danger-color: mix($color-danger, $color-white, 100%);

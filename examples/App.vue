@@ -71,9 +71,10 @@ body > div:first-child {
   }
 
   .main {
-    background-color: rgb(204,232,207);
-    padding: 10px 20px;
+    min-height: 100vh;
     margin-left: 130px;
+    padding: 10px 20px;
+    background-color: rgb(204,232,207);
 
     > p {
       color: #909399;

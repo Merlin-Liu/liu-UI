@@ -15,7 +15,7 @@
 </template>
 
 <script type="text/babel">
-const TYPE_MAP = ['success', 'info', 'warning', 'danger']
+const TYPE_MAP = ['', 'success', 'info', 'warning', 'danger']
 const EFFECT_MAP = ['dark', 'light', 'plain']
 
 export default {
@@ -24,7 +24,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'info',
+      default: '',
       validator: str => TYPE_MAP.includes(str)
     },
     closeable: Boolean,

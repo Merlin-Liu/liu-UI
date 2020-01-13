@@ -1,0 +1,139 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+
+@include b(tag) {
+  display: inline-block;
+  height: $tag-height;
+  padding: $tag-padding;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $tag-border-radius;
+  font-size: $tag-font-size;
+  line-height: $tag-line-height;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  background-color: $tag-default-background-color;
+  border-color: $tag-default-border-color;
+  color: $tag-default-color;
+
+  &.liu-tag--info {
+    background-color: $tag-info-background-color;
+    border-color: $tag-info-border-color;
+    color: $tag-info-color;
+  }
+  &.liu-tag--success {
+    background-color: $tag-success-background-color;
+    border-color: $tag-success-border-color;
+    color: $tag-success-color;
+  }
+  &.liu-tag--warning {
+    background-color: $tag-warning-background-color;
+    border-color: $tag-warning-border-color;
+    color: $tag-warning-color;
+  }
+  &.liu-tag--danger {
+    background-color: $tag-danger-background-color;
+    border-color: $tag-danger-border-color;
+    color: $tag-danger-color;
+  }
+
+  @include e(close) {
+    position: relative;
+    top: -1px;
+    right: -5px;
+    vertical-align: middle;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+  }
+
+  @include m(dark) {
+    background-color: mix($color-primary, $color-white, 100%);
+    border-color: mix($color-primary, $color-white, 100%);
+    color: mix($color-primary, $color-white, 0);
+
+    &.liu-tag--info {
+      background-color: mix($color-info, $color-white, 100%);
+      border-color: mix($color-info, $color-white, 100%);
+      color: mix($color-info, $color-white, 0);
+    }
+    &.liu-tag--success {
+      background-color: mix($color-success, $color-white, 100%);
+      border-color: mix($color-success, $color-white, 100%);
+      color: mix($color-success, $color-white, 0);
+    }
+    &.liu-tag--warning {
+      background-color: mix($color-warning, $color-white, 100%);
+      border-color: mix($color-warning, $color-white, 100%);
+      color: mix($color-warning, $color-white, 0);
+    }
+    &.liu-tag--danger {
+      background-color: mix($color-danger, $color-white, 100%);
+      border-color: mix($color-danger, $color-white, 100%);
+      color: mix($color-danger, $color-white, 0);
+    }
+  }
+
+  @include m(plain) {
+    background-color: mix($color-primary, $color-white, 0);
+    border-color: mix($color-primary, $color-white, 40%);
+    color: mix($color-primary, $color-white, 100%);
+
+    &.liu-tag--info {
+      background-color: mix($color-info, $color-white, 0);
+      border-color: mix($color-info, $color-white, 40%);
+      color: mix($color-info, $color-white, 100%);
+    }
+    &.liu-tag--success {
+      background-color: mix($color-success, $color-white, 0);
+      border-color: mix($color-success, $color-white, 40%);
+      color: mix($color-success, $color-white, 100%);
+    }
+    &.liu-tag--warning {
+      background-color: mix($color-warning, $color-white, 0);
+      border-color: mix($color-warning, $color-white, 40%);
+      color: mix($color-warning, $color-white, 100%);
+    }
+    &.liu-tag--danger {
+      background-color: mix($color-danger, $color-white, 0);
+      border-color: mix($color-danger, $color-white, 40%);
+      color: mix($color-danger, $color-white, 100%);
+    }
+  }
+
+  @include m(medium) {
+    height: 28px;
+    line-height: 26px;
+
+    .el-icon-close {
+      transform: scale(.8);
+    }
+  }
+
+  @include m(small) {
+    height: 24px;
+    padding: 0 8px;
+    line-height: 22px;
+
+    .el-icon-close {
+      transform: scale(.8);
+    }
+  }
+
+  @include m(mini) {
+    height: 20px;
+    padding: 0 5px;
+    line-height: 19px;
+
+    .el-icon-close {
+      margin-left: -3px;
+      transform: scale(.7);
+    }
+  }
+}
