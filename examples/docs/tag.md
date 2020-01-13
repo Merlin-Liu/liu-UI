@@ -65,7 +65,7 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
   </div>
   <br>
   <div>
-    <span style="width: 45px">drak</span>
+    <span>drak</span>
     <liu-tag effect="dark">标签一</liu-tag>
     <liu-tag type="success" effect="dark">标签二</liu-tag>
     <liu-tag type="info" effect="dark">标签三</liu-tag>
@@ -74,7 +74,7 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
   </div>
   <br>
   <div>
-    <span style="width: 45px">plain</span>
+    <span>plain</span>
     <liu-tag effect="plain">标签一</liu-tag>
     <liu-tag type="success" effect="plain">标签二</liu-tag>
     <liu-tag type="info" effect="plain">标签三</liu-tag>

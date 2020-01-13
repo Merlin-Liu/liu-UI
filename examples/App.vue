@@ -62,7 +62,7 @@ body > div:first-child {
       }
 
       & > a {
-        &.router-link-active {
+        &.router-link-exact-active {
           color: #F56c6c;
           text-decoration: underline;
         }

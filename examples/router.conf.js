@@ -16,7 +16,7 @@ export const COMPOENENT_NAME_MAP = {
 }
 
 const context = require.context('./docs', false, /\.md$/)
-export const componentRouters = context.keys().map(url => {
+const componentRouterList = context.keys().map(url => {
   const start = url.indexOf('/')
   const end = url.lastIndexOf('.')
   const name = url.substring(start + 1, end)
@@ -28,8 +28,15 @@ export const componentRouters = context.keys().map(url => {
     component: require(`./docs${path}.md`).default
   }
 })
+componentRouterList.unshift({
+  path: '/',
+  name: '首页',
+  redirect: '/alert'
+})
+
+export const componentRouters = componentRouterList
 
 export default new Router({
-  routes: componentRouters
+  routes: componentRouterList
 });
 
