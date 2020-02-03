@@ -1,24 +1,22 @@
 import Vue from 'vue';
 import loadingVue from './loading.vue'
-
-let loadingInstance;
+import afterLevel from '@/src/utils/after-level';
 
 const LoadingConstructor = Vue.extend(loadingVue);
 
 LoadingConstructor.prototype.close = function() {
-  loadingInstance = undefined
-
-  if (this.$el && this.$el.parentNode) {
-    this.$el.parentNode.removeChild(this.$el)
+  const transitionLevelCallback = () => {
+    if (this.$el && this.$el.parentNode) {
+      this.$el.parentNode.removeChild(this.$el)
+    }
+    this.$destroy()
   }
-  this.$destroy()
+
+  afterLevel(this, transitionLevelCallback, 300)
+  this.visible = false
 }
 
 const Loading = () => {
-  if (loadingInstance) {
-    return loadingInstance
-  }
-
   const parent = document.body
 
   const instance = new LoadingConstructor({
@@ -26,8 +24,8 @@ const Loading = () => {
   })
 
   parent.appendChild(instance.$el)
+  instance.visible = true
 
-  loadingInstance = instance
   return instance
 }
 
