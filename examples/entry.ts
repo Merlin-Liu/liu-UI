@@ -21,6 +21,7 @@ import LiuLoding from '../packages/loading'
 import LiuNotification from '../packages/notification'
 import LiuAlert from '../packages/alert'
 import LiuTag from '../packages/tag'
+import LiuTree from '../packages/tree'
 
 // 组件样式
 import '../packages/styule/index.scss'
@@ -44,6 +45,7 @@ Vue.use(LiuOption)
 Vue.use(LiuLoding)
 Vue.use(LiuAlert)
 Vue.use(LiuTag)
+Vue.use(LiuTree)
 Vue.prototype.$notify = LiuNotification
 
 // demo组件

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+@import "mixins/var";
+@import "mixins/mixins";
+
+@include b(tree-node) {
+  @include e(expand-icon) {
+    padding: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+
+    &.is-leaf {
+      color: transparent;
+      cursor: default;
+    }
+
+    &.is-expand {
+      transform: rotate(90deg);
+    }
+  }
+}
